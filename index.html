@@ -67,25 +67,7 @@ body.modal-open {
 }
 </style>
 
-<!-- JavaScript: Place this before </body> -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Show modal on load
-  document.getElementById('modalContainer').style.display = 'flex';
-  document.body.classList.add('modal-open');
 
-  // Close modal handler
-  function closeModal() {
-    document.getElementById('modalContainer').style.display = 'none';
-    document.body.classList.remove('modal-open');
-  }
-
-  document.getElementById('acceptButton').onclick = closeModal;
-  document.getElementById('rejectButton').onclick = closeModal;
-  document.getElementById('manageButton').onclick = closeModal;
-  document.getElementById('closeButton').onclick = closeModal;
-});
-</script>
 
 
 
