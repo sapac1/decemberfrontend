@@ -3,38 +3,41 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NordThread | Modern Clothing Store</title>
+  <title>LunaBelle | Women's Clothing</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <!-- Google Fonts (Poppins for a fresh, modern look) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
     :root{
-      --bg:#0f172a; --panel:#111827; --soft:#1f2937; --soft2:#0b1020;
-      --text:#e5e7eb; --muted:#9ca3af;
-      --brand:#2563eb; --brand-weak:rgba(37,99,235,.15);
-      --accent:#22c55e; --danger:#ef4444; --ring:rgba(37,99,235,.25);
-      --radius:14px; --shadow:0 10px 30px rgba(0,0,0,.25);
+      --bg:#f8fafc;           /* light backdrop */
+      --panel:#ffffff;        /* cards */
+      --ink:#0f172a;          /* text dark */
+      --muted:#64748b;        /* subdued text */
+      --line:#e2e8f0;         /* borders */
+      --brand:#e11d48;        /* rose-600 */
+      --brand-weak:rgba(225,29,72,.12);
+      --accent:#22c55e;       /* green accent for success */
+      --ring:rgba(225,29,72,.22);
+      --radius:14px;
+      --shadow:0 10px 30px rgba(2,6,23,.08);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; font-family:'Noto Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
-      background:linear-gradient(180deg,#0f172a 0%, #111827 70%, #1f2937 100%);
-      color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      line-height:1.7;
+      margin:0; font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+      color:var(--ink); background:var(--bg); line-height:1.7;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
     a{color:inherit; text-decoration:none}
     img{max-width:100%; display:block}
 
     /* Header */
     header{
-      position:sticky; top:0; z-index:40;
-      backdrop-filter:blur(8px);
-      background:rgba(17,24,39,.78);
-      border-bottom:1px solid rgba(255,255,255,.06);
+      position:sticky; top:0; z-index:40; background:rgba(255,255,255,.85);
+      backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
     }
     .nav{
       max-width:1200px; margin:0 auto; padding:14px 20px;
@@ -42,43 +45,49 @@
     }
     .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px}
     .brand i{color:var(--brand)}
-    .nav-links{display:flex; gap:18px; font-size:14px}
-    .nav-links a{opacity:.9}
+    .nav-links{display:flex; gap:18px; margin-left:10px}
+    .nav-links a{font-size:14px; color:#0f172a; opacity:.85}
     .nav-links a:hover{opacity:1}
+    .grow{flex:1}
     .icon-btn{
-      position:relative; border:1px solid rgba(255,255,255,.15);
-      background:rgba(255,255,255,.06); color:#fff; padding:10px 14px;
-      border-radius:10px; cursor:pointer; transition:.2s;
+      position:relative; border:1px solid var(--line);
+      background:#fff; color:#0f172a; padding:10px 14px;
+      border-radius:10px; cursor:pointer; transition:.22s;
     }
-    .icon-btn:hover{border-color:var(--brand); box-shadow:0 0 0 4px var(--ring)}
+    .icon-btn:hover{box-shadow:0 0 0 4px var(--ring)}
     .badge{
-      position:absolute; top:-6px; right:-6px; background:var(--accent);
-      color:#052e16; font-size:12px; padding:2px 6px; border-radius:999px; font-weight:700;
+      position:absolute; top:-6px; right:-6px; background:var(--brand);
+      color:#fff; font-size:12px; padding:2px 6px; border-radius:999px; font-weight:700;
     }
 
     /* Hero */
     .hero{
-      position:relative; min-height:64vh; display:grid; place-items:center; overflow:hidden;
+      position:relative; min-height:62vh; display:grid; place-items:center; overflow:hidden;
       background:
-        linear-gradient(to bottom right, rgba(37,99,235,.25), rgba(17,24,39,.65)),
-        url('https://images.unsplash.com/photo-1520975922324-48f42ec3e304?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+        radial-gradient(1200px 500px at 10% 10%, #ffe4e6 0%, rgba(255,228,230,0) 60%),
+        radial-gradient(1000px 500px at 90% 0%, #faf5ff 0%, rgba(250,245,255,0) 60%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
     }
-    .hero-box{
-      width:100%; max-width:960px; margin:0 auto; padding:48px 28px; text-align:center;
-      background:rgba(17,24,39,.55); border:1px solid rgba(255,255,255,.08);
-      border-radius:var(--radius); box-shadow:var(--shadow)
+    .hero-wrap{
+      width:100%; max-width:1200px; padding:50px 20px; display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center;
     }
-    .hero h1{font-size:36px; margin:0 0 10px}
-    .hero p{color:#d1d5db; margin:0 auto 20px; max-width:720px}
+    @media (max-width: 900px){ .hero-wrap{grid-template-columns:1fr; text-align:center} }
+    .hero-text h1{font-size:40px; line-height:1.15; margin:0 0 10px}
+    .hero-text p{color:var(--muted); margin:0 0 18px; max-width:620px}
+    .cta{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    @media (max-width: 900px){ .cta{justify-content:center} }
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      padding:12px 18px; border-radius:10px; border:1px solid transparent; cursor:pointer; transition:.22s;
-      font-size:14px; font-weight:600;
+      padding:12px 18px; border-radius:10px; border:1px solid transparent; cursor:pointer; transition:.22s; font-weight:600; font-size:14px;
     }
-    .btn.primary{background:var(--brand); color:#eef2ff}
+    .btn.primary{background:var(--brand); color:#fff}
     .btn.primary:hover{filter:brightness(1.05); transform:translateY(-2px)}
-    .btn.ghost{border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.06)}
-    .btn.ghost:hover{border-color:#93c5fd; box-shadow:0 0 0 6px rgba(147,197,253,.18)}
+    .btn.ghost{border:1px solid var(--line); background:#fff; color:#0f172a}
+    .btn.ghost:hover{box-shadow:0 0 0 6px var(--ring)}
+    .hero-shot{
+      background:#fff; border:1px solid var(--line); border-radius:20px; overflow:hidden; box-shadow:var(--shadow)
+    }
+    .hero-shot img{width:100%; height:100%; object-fit:cover}
 
     /* Main */
     .container{max-width:1200px; margin:0 auto; padding:32px 20px 80px}
@@ -88,19 +97,16 @@
     /* Toolbar */
     .toolbar{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:18px}
     .filter-chip{
-      border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.05);
-      color:#d1d5db; padding:8px 12px; border-radius:999px; cursor:pointer; font-size:13px;
+      border:1px solid var(--line); background:#fff; color:#0f172a; padding:8px 12px; border-radius:999px; cursor:pointer; font-size:13px;
     }
     .filter-chip.active{border-color:var(--brand); box-shadow:0 0 0 4px var(--ring)}
-    .grow{flex:1}
     .input{
-      width:100%; border:1px solid rgba(255,255,255,.1); background:var(--soft2);
-      color:#fff; padding:11px 12px; border-radius:10px; outline:none;
+      width:100%; border:1px solid var(--line); background:#fff;
+      color:#0f172a; padding:11px 12px; border-radius:10px; outline:none;
     }
     .input:focus{border-color:var(--brand); box-shadow:0 0 0 4px var(--ring)}
     .select{
-      border:1px solid rgba(255,255,255,.1); background:var(--soft2);
-      color:#fff; padding:11px 12px; border-radius:10px;
+      border:1px solid var(--line); background:#fff; color:#0f172a; padding:11px 12px; border-radius:10px;
     }
 
     /* Grid */
@@ -110,14 +116,14 @@
     @media (max-width:520px){ .grid{grid-template-columns:1fr} }
 
     .card{
-      background:#0d1324; border:1px solid rgba(255,255,255,.08);
-      border-radius:16px; overflow:hidden; display:flex; flex-direction:column;
+      background:var(--panel); border:1px solid var(--line);
+      border-radius:16px; overflow:hidden; display:flex; flex-direction:column; box-shadow:var(--shadow);
     }
-    .card .media{position:relative}
-    .card img{width:100%; height:200px; object-fit:cover}
+    .card .media{position:relative; background:#fff}
+    .card img{width:100%; height:220px; object-fit:cover; display:block}
     .tag{
       position:absolute; left:12px; top:12px; background:var(--brand-weak);
-      color:#dbeafe; border:1px solid rgba(37,99,235,.35);
+      color:#be123c; border:1px solid rgba(225,29,72,.28);
       font-size:12px; padding:4px 8px; border-radius:999px;
     }
     .content{padding:14px}
@@ -131,35 +137,35 @@
 
     /* Drawer (Cart) */
     .drawer{
-      position:fixed; top:0; right:-460px; width:440px; max-width:92vw; height:100%;
-      background:#0b0f1d; border-left:1px solid rgba(255,255,255,.08); z-index:60;
-      display:flex; flex-direction:column; transition:right .28s ease;
+      position:fixed; top:0; right:-480px; width:460px; max-width:92vw; height:100%;
+      background:#ffffff; border-left:1px solid var(--line); z-index:60;
+      display:flex; flex-direction:column; transition:right .28s ease; box-shadow:-8px 0 30px rgba(2,6,23,.08);
     }
     .drawer.open{right:0}
     .drawer-header{
       display:flex; align-items:center; justify-content:space-between; padding:16px;
-      border-bottom:1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid var(--line);
     }
     .drawer-body{flex:1; overflow:auto; padding:14px}
     .cart-item{
       display:grid; grid-template-columns:64px 1fr auto; gap:10px; align-items:center;
-      border-bottom:1px solid rgba(255,255,255,.06); padding:10px 0;
+      border-bottom:1px solid var(--line); padding:10px 0;
     }
-    .cart-item img{width:64px; height:64px; object-fit:cover; border-radius:8px}
+    .cart-item img{width:64px; height:64px; object-fit:cover; border-radius:8px; border:1px solid var(--line)}
     .item-title{font-size:14px; font-weight:700}
     .item-meta{color:var(--muted); font-size:12px}
     .qty{display:flex; align-items:center; gap:8px}
     .qty button{
-      width:28px; height:28px; border-radius:8px; border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06); color:#fff; cursor:pointer;
+      width:28px; height:28px; border-radius:8px; border:1px solid var(--line);
+      background:#fff; color:#0f172a; cursor:pointer;
     }
-    .remove{color:#fecaca; background:transparent; border:none; cursor:pointer}
+    .remove{color:var(--brand); background:transparent; border:none; cursor:pointer}
     .drawer-footer{
-      border-top:1px solid rgba(255,255,255,.08); padding:16px; display:grid; gap:10px;
+      border-top:1px solid var(--line); padding:16px; display:grid; gap:10px;
     }
     .total-row{display:flex; justify-content:space-between; align-items:center}
     .checkout{
-      background:var(--accent); color:#052e16; border:none; padding:12px; border-radius:10px;
+      background:var(--brand); color:#fff; border:none; padding:12px; border-radius:10px;
       font-weight:700; cursor:pointer;
     }
     .checkout:hover{filter:brightness(1.05)}
@@ -167,14 +173,14 @@
 
     /* Footer */
     footer{
-      background:#0b0f1d; color:#cbd5e1; padding:48px 20px; border-top:1px solid rgba(255,255,255,.06)
+      background:#ffffff; color:var(--ink); padding:48px 20px; border-top:1px solid var(--line)
     }
     .foot{
       max-width:1200px; margin:0 auto; display:grid; gap:18px; grid-template-columns:2fr 1fr 1fr 1fr;
     }
     @media (max-width:780px){ .foot{grid-template-columns:1fr 1fr} }
-    footer h5{margin:0 0 10px; color:#fff; font-size:13px}
-    .copy{text-align:center; color:#94a3b8; font-size:12px; margin-top:20px}
+    footer h5{margin:0 0 10px; color:#0f172a; font-size:13px}
+    .copy{text-align:center; color:var(--muted); font-size:12px; margin-top:20px}
   </style>
 </head>
 <body>
@@ -182,15 +188,16 @@
   <!-- Header -->
   <header>
     <div class="nav" role="navigation" aria-label="Main navigation">
-      <div class="brand"><i class="fa-solid fa-shirt"></i> NordThread</div>
+      <div class="brand"><i class="fa-solid fa-gem"></i> LunaBelle</div>
       <div class="nav-links">
         <a href="#shop">Shop</a>
         <a href="#collections">Collections</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </div>
+      <div class="grow"></div>
       <button id="cartBtn" class="icon-btn" aria-label="Open cart">
-        <i class="fa-solid fa-cart-shopping"></i>
+        <i class="fa-solid fa-bag-shopping"></i>
         <span id="cartBadge" class="badge" aria-live="polite">0</span>
       </button>
     </div>
@@ -198,29 +205,35 @@
 
   <!-- Hero -->
   <section class="hero" id="home" aria-label="Hero">
-    <div class="hero-box">
-      <h1>Feel Good. Look Sharp.</h1>
-      <p>Everyday essentials and statement pieces—crafted for comfort, designed for modern life.</p>
-      <div>
-        <a class="btn primary" href="#shop"><i class="fa-solid fa-compass"></i> Explore New Arrivals</a>
-        <a class="btn ghost" href="#collections"><i class="fa-solid fa-layer-group"></i> View Collections</a>
+    <div class="hero-wrap">
+      <div class="hero-text">
+        <h1>Effortless Style, Everyday Confidence.</h1>
+        <p>Discover dresses, tops, and accessories designed to flatter and made to last—curated for modern women who love a clean, feminine aesthetic.</p>
+        <div class="cta">
+          <a href="#shop" class="btn primary"><i class="fa-solid fa-compass"></i> Shop New Arrivals</a>
+          <a href="#collections" class="btn ghost"><i class="fa-solid fa-layer-group"></i> Explore Collections</a>
+        </div>
+      </div>
+      <div class="hero-shot" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1800&auto=format&fit=crop" alt="Woman in stylish dress on a sunny street">
       </div>
     </div>
   </section>
 
   <!-- Shop -->
   <main class="container" id="shop">
-    <h2 class="section-title">Shop Clothing</h2>
-    <p class="helper">Browse by category, search by keyword, or sort by price/popularity.</p>
+    <h2 class="section-title">Shop Women’s Clothing</h2>
+    <p class="helper">Filter by category, search by keyword, or sort by price/popularity. Add items to your bag and check out later.</p>
 
     <div class="toolbar" role="toolbar" aria-label="Filters">
       <button class="filter-chip active" data-filter="all">All</button>
-      <button class="filter-chip" data-filter="men">Men</button>
-      <button class="filter-chip" data-filter="women">Women</button>
+      <button class="filter-chip" data-filter="dresses">Dresses</button>
+      <button class="filter-chip" data-filter="tops">Tops</button>
+      <button class="filter-chip" data-filter="bottoms">Bottoms</button>
       <button class="filter-chip" data-filter="accessories">Accessories</button>
 
       <div class="grow"></div>
-      <input id="q" class="input" type="search" placeholder="Search (e.g., jacket, linen, black)" aria-label="Search products">
+      <input id="q" class="input" type="search" placeholder="Search (e.g., floral, linen, blazer)" aria-label="Search products">
       <select id="sortSelect" class="select" aria-label="Sort">
         <option value="featured">Featured</option>
         <option value="priceAsc">Price: Low → High</option>
@@ -234,10 +247,57 @@
     </section>
   </main>
 
+  <!-- Collections (static teaser) -->
+  <section class="container" id="collections">
+    <h2 class="section-title">Collections</h2>
+    <p class="helper">Seasonal edits and capsule wardrobes with pieces that mix and match effortlessly.</p>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+      <article class="card">
+        <div class="media">
+          <img src="https://images.unsplash.com/photo-1520975661595-645391095997?q=80&w=1600&auto=format&fit=crop" alt="Soft pastel dresses on rack">
+          <span class="tag">Spring Pastels</span>
+        </div>
+        <div class="content">
+          <div class="title">Pastel Bloom</div>
+          <p class="desc">Blush, lilac, and mint palettes in flowing fabrics.</p>
+        </div>
+        <div class="actions">
+          <a class="btn ghost small" href="#shop"><i class="fa-solid fa-magnifying-glass"></i> View Items</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media">
+          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1600&auto=format&fit=crop" alt="Woman in neutral-toned outfit walking">
+          <span class="tag">Neutral Capsule</span>
+        </div>
+        <div class="content">
+          <div class="title">Modern Neutrals</div>
+          <p class="desc">Timeless sand, ivory, charcoal, and black basics.</p>
+        </div>
+        <div class="actions">
+          <a class="btn ghost small" href="#shop"><i class="fa-solid fa-magnifying-glass"></i> View Items</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop" alt="Woman in chic city look">
+          <span class="tag">City Chic</span>
+        </div>
+        <div class="content">
+          <div class="title">City Edit</div>
+          <p class="desc">Polished silhouettes for work and weekend.</p>
+        </div>
+        <div class="actions">
+          <a class="btn ghost small" href="#shop"><i class="fa-solid fa-magnifying-glass"></i> View Items</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <!-- Drawer: Cart -->
   <aside id="drawer" class="drawer" aria-label="Shopping cart" aria-hidden="true">
     <div class="drawer-header">
-      <h3 style="margin:0">Your Cart</h3>
+      <h3 style="margin:0">Your Bag</h3>
       <button id="closeDrawer" class="icon-btn" aria-label="Close cart"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <div id="cartList" class="drawer-body"><!-- Rendered by JS --></div>
@@ -255,12 +315,12 @@
   <footer id="about">
     <div class="foot">
       <div>
-        <h5>NordThread</h5>
-        <p>Minimal design, maximum comfort. Designed to mix, match, and last.</p>
+        <h5>LunaBelle</h5>
+        <p>Feminine, modern, effortless. Designed to feel good and look beautiful—day and night.</p>
       </div>
       <div>
         <h5>Shop</h5>
-        <p>Men / Women / Accessories</p>
+        <p>Dresses / Tops / Bottoms / Accessories</p>
       </div>
       <div>
         <h5>Support</h5>
@@ -268,62 +328,86 @@
       </div>
       <div>
         <h5>Contact</h5>
-        <p id="contact">hello@nordthread.store<br>Al Rabee, Riyadh</p>
+        <p id="contact">hello@lunabelle.store<br>Al Rabee, Riyadh</p>
       </div>
     </div>
-    <div class="copy">© 2026 NordThread. All rights reserved.</div>
+    <div class="copy">© 2026 LunaBelle. All rights reserved.</div>
   </footer>
 
   <script>
     /* ---------- PRODUCT DATA (sample) ---------- */
     const PRODUCTS = [
       {
-        id:'p1', title:'Relaxed Linen Shirt', category:'men', rating:4.7,
-        price:42, compareAt:58, featured:true,
-        img:'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1600&auto=format&fit=crop',
-        desc:'Breathable linen with a relaxed fit. Summer essential.'
-      },
-      {
-        id:'p2', title:'Everyday Denim Jacket', category:'men', rating:4.8,
+        id:'p1', title:'Floral Midi Dress', category:'dresses', rating:4.8,
         price:89, compareAt:109, featured:true,
-        img:'https://images.unsplash.com/photo-1520975922324-48f42ec3e304?q=80&w=1600&auto=format&fit=crop',
-        desc:'Classic cut, durable denim. Layer up in style.'
-      },
-      {
-        id:'p3', title:'Ribbed Knit Dress', category:'women', rating:4.6,
-        price:65, compareAt:null, featured:false,
         img:'https://images.unsplash.com/photo-1520975661595-645391095997?q=80&w=1600&auto=format&fit=crop',
-        desc:'Soft knit with a flattering silhouette. Day-to-night ready.'
+        desc:'Lightweight chiffon, tie waist, fully lined. Perfect for weekends.'
       },
       {
-        id:'p4', title:'Oversized Wool Coat', category:'women', rating:4.9,
-        price:159, compareAt:189, featured:true,
-        img:'https://images.unsplash.com/photo-1518112166137-85f9979a43ae?q=80&w=1600&auto=format&fit=crop',
-        desc:'Premium wool blend. Warmth without the weight.'
+        id:'p2', title:'Silk Camisole', category:'tops', rating:4.6,
+        price:49, compareAt:null, featured:false,
+        img:'https://images.unsplash.com/photo-1503342394128-c104d54dba01?q=80&w=1600&auto=format&fit=crop',
+        desc:'100% silk with a flattering V-neck. Layers beautifully.'
       },
       {
-        id:'p5', title:'Minimal Leather Belt', category:'accessories', rating:4.4,
-        price:29, compareAt:null, featured:false,
-        img:'https://images.unsplash.com/photo-1603252109303-2751441dd157?q=80&w=1600&auto=format&fit=crop',
-        desc:'Vegetable-tanned leather, brushed metal buckle.'
-      },
-      {
-        id:'p6', title:'Classic White Sneakers', category:'accessories', rating:4.7,
-        price:79, compareAt:98, featured:true,
-        img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1600&auto=format&fit=crop',
-        desc:'Clean silhouette with cushioned insoles.'
-      },
-      {
-        id:'p7', title:'High-Rise Mom Jeans', category:'women', rating:4.5,
-        price:72, compareAt:89, featured:false,
+        id:'p3', title:'High-Rise Wide Pants', category:'bottoms', rating:4.7,
+        price:72, compareAt:89, featured:true,
         img:'https://images.unsplash.com/photo-1551854838-212c50b4c184?q=80&w=1600&auto=format&fit=crop',
-        desc:'Comfort stretch denim with a tapered leg.'
+        desc:'Structured yet soft. Elegant drape with side pockets.'
       },
       {
-        id:'p8', title:'Organic Cotton Tee', category:'men', rating:4.3,
-        price:22, compareAt:null, featured:false,
-        img:'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?q=80&w=1600&auto=format&fit=crop',
-        desc:'Ultra-soft organic cotton. Everyday basic.'
+        id:'p4', title:'Double-Breasted Blazer', category:'tops', rating:4.9,
+        price:129, compareAt:149, featured:true,
+        img:'https://images.unsplash.com/photo-1518112166137-85f9979a43ae?q=80&w=1600&auto=format&fit=crop',
+        desc:'Tailored fit with a hint of stretch. Fully lined.'
+      },
+      {
+        id:'p5', title:'Wrap Mini Dress', category:'dresses', rating:4.5,
+        price:79, compareAt:null, featured:false,
+        img:'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1600&auto=format&fit=crop',
+        desc:'Soft jersey wrap with adjustable tie and flutter sleeves.'
+      },
+      {
+        id:'p6', title:'Pleated Satin Skirt', category:'bottoms', rating:4.4,
+        price:59, compareAt:null, featured:false,
+        img:'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1600&auto=format&fit=crop',
+        desc:'Midi length, subtle sheen, elastic waistband for comfort.'
+      },
+      {
+        id:'p7', title:'Leather Crossbody Bag', category:'accessories', rating:4.7,
+        price:95, compareAt:119, featured:true,
+        img:'https://images.unsplash.com/photo-1548359638-8a6bfbcd4c1b?q=80&w=1600&auto=format&fit=crop',
+        desc:'Minimal silhouette with adjustable strap and inner pocket.'
+      },
+      {
+        id:'p8', title:'Cashmere Crew Sweater', category:'tops', rating:4.6,
+        price:99, compareAt:129, featured:true,
+        img:'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1600&auto=format&fit=crop',
+        desc:'Grade-A cashmere. Feather-soft with timeless appeal.'
+      },
+      {
+        id:'p9', title:'Belted Trench Coat', category:'tops', rating:4.8,
+        price:149, compareAt:179, featured:true,
+        img:'https://images.unsplash.com/photo-1520975922324-48f42ec3e304?q=80&w=1600&auto=format&fit=crop',
+        desc:'Water-resistant finish, classic storm flap, removable belt.'
+      },
+      {
+        id:'p10', title:'Silk Scarf', category:'accessories', rating:4.3,
+        price:29, compareAt:null, featured:false,
+        img:'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?q=80&w=1600&auto=format&fit=crop',
+        desc:'Hand-rolled edges. Add a pop of color to any outfit.'
+      },
+      {
+        id:'p11', title:'Button-Down Linen Shirt', category:'tops', rating:4.5,
+        price:55, compareAt:null, featured:false,
+        img:'https://images.unsplash.com/photo-1520975922324-48f42ec3e304?q=80&w=1600&auto=format&fit=crop',
+        desc:'Breathable, relaxed fit. A warm-weather staple.'
+      },
+      {
+        id:'p12', title:'A-Line Denim Skirt', category:'bottoms', rating:4.4,
+        price:48, compareAt:59, featured:false,
+        img:'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1600&auto=format&fit=crop',
+        desc:'Vintage-inspired A-line cut with front buttons.'
       }
     ];
 
@@ -335,11 +419,11 @@
 
     function loadCart(){
       try{
-        const raw = localStorage.getItem('nord_cart');
+        const raw = localStorage.getItem('lunabelle_cart');
         return raw ? JSON.parse(raw) : {};
       }catch(e){ return {}; }
     }
-    function saveCart(){ localStorage.setItem('nord_cart', JSON.stringify(state.cart)); }
+    function saveCart(){ localStorage.setItem('lunabelle_cart', JSON.stringify(state.cart)); }
 
     /* ---------- UTILS ---------- */
     const usd = n => '$' + n.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});
@@ -373,7 +457,7 @@
         card.className = 'card';
         card.innerHTML = `
           <div class="media">
-            <img alt="${p.title}" src="${p.img}">
+            <img src="${p.img}" alt="${p.title}">
             ${p.featured ? `<span class="tag">Featured</span>`:''}
           </div>
           <div class="content">
@@ -382,12 +466,12 @@
             <div class="price-row">
               <div class="price">${usd(p.price)}</div>
               ${p.compareAt ? `<div class="compare">${usd(p.compareAt)}</div>`:''}
-              <div title="Rating" style="margin-left:auto;color:#fde68a"><i class="fa-solid fa-star"></i> ${p.rating.toFixed(1)}</div>
+              <div title="Rating" style="margin-left:auto;color:#f59e0b"><i class="fa-solid fa-star"></i> ${p.rating.toFixed(1)}</div>
             </div>
           </div>
           <div class="actions">
-            <button class="btn small" aria-label="Add to wishlist (visual only)"><i class="fa-regular fa-heart"></i> Wishlist</button>
-            <button class="btn primary small" data-add="${p.id}" aria-label="Add ${p.title} to cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+            <button class="btn ghost small" aria-label="Add to wishlist (visual only)"><i class="fa-regular fa-heart"></i> Wishlist</button>
+            <button class="btn primary small" data-add="${p.id}" aria-label="Add ${p.title} to bag"><i class="fa-solid fa-bag-shopping"></i> Add to Bag</button>
           </div>
         `;
         grid.appendChild(card);
@@ -422,11 +506,11 @@
       const list = document.getElementById('cartList');
       const items = Object.values(state.cart);
       if(items.length===0){
-        list.innerHTML = `<div class="empty">Your cart is empty. Start adding your favorites!</div>`;
+        list.innerHTML = `<div class="empty">Your bag is empty. Add something beautiful!</div>`;
       } else {
         list.innerHTML = items.map(it=>`
           <div class="cart-item">
-            <img alt="${it.title}" src="${it.img}">
+            <img src="${it.img}" alt="${it.title}">
             <div>
               <div class="item-title">${it.title}</div>
               <div class="item-meta">${usd(it.price)} each</div>
@@ -468,8 +552,8 @@
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeDrawer(); });
 
     document.getElementById('checkoutBtn').addEventListener('click', ()=>{
-      if(cartCount()===0){ alert('Your cart is empty.'); return; }
-      alert('Demo only — integrate Stripe/PayPal to accept payments.');
+      if(cartCount()===0){ alert('Your bag is empty.'); return; }
+      alert('Demo only — integrate Stripe/PayPal to accept payments and process orders.');
     });
 
     /* ---------- SEARCH / FILTER / SORT ---------- */
